@@ -20,14 +20,18 @@ jobs:
         working-directory: ./src
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup .NET SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Install dependencies
-        run: dotnet restore
-      - name: Build
-        run: dotnet build --configuration Debug --no-restore
-      - name: Test
-        run: dotnet test --no-restore --verbosity normal
+    - uses: actions/checkout@v3
+    - name: Setup .NET SDK ${{ matrix.dotnet-version }}
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+    - name: Restore (Rested.Core)
+      run: dotnet restore Rested.Core
+    - name: Restore (Rested.Core.MSTest)
+      run: dotnet restore Rested.Core.MSTest
+    - name: Build (Rested.Core)
+      run: dotnet build Rested.Core --configuration Debug --no-restore
+    - name: Build (Rested.Core.MSTest)
+      run: dotnet build Rested.Core.MSTest --configuration Debug --no-restore
+    - name: Test (Rested.Core)
+      run: dotnet test Rested.Core --no-restore --verbosity normal

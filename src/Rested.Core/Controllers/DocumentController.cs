@@ -44,10 +44,10 @@ namespace Rested.Core.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status401Unauthorized)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status403Forbidden)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public abstract Task<ActionResult<TDocument>> GetDocument([FromRoute] Guid id);
 
         /// <summary>
@@ -58,10 +58,10 @@ namespace Rested.Core.Controllers
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status401Unauthorized)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status403Forbidden)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public abstract Task<ActionResult<List<TDocument>>> GetDocuments();
 
         /// <summary>
@@ -73,10 +73,10 @@ namespace Rested.Core.Controllers
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status401Unauthorized)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status403Forbidden)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public abstract Task<ActionResult<SearchDocumentsResults<TData, TDocument>>> SearchDocuments([FromBody] SearchRequest searchRequest);
 
         /// <summary>
@@ -88,9 +88,9 @@ namespace Rested.Core.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status401Unauthorized)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public abstract Task<ActionResult<TDocument>> InsertDocument([FromBody] TData data);
 
         /// <summary>
@@ -101,9 +101,9 @@ namespace Rested.Core.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status401Unauthorized)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public abstract Task<ActionResult<List<TDocument>>> InsertMultipleDocuments([FromBody] List<TData> datas);
 
         /// <summary>
@@ -116,10 +116,10 @@ namespace Rested.Core.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status401Unauthorized)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status403Forbidden)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public abstract Task<ActionResult<TDocument>> UpdateDocument(
             [FromRoute] Guid id,
             [FromHeader] IfMatchByteArray etag,
@@ -133,10 +133,10 @@ namespace Rested.Core.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status401Unauthorized)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status403Forbidden)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public abstract Task<ActionResult<List<TDocument>>> UpdateMultipleDocuments([FromBody] List<Dto<TData>> dtos);
 
         /// <summary>
@@ -149,10 +149,10 @@ namespace Rested.Core.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status401Unauthorized)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status403Forbidden)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public abstract Task<ActionResult<TDocument>> PatchDocument(
             [FromRoute] Guid id,
             [FromHeader] IfMatchByteArray etag,
@@ -166,10 +166,10 @@ namespace Rested.Core.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status401Unauthorized)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status403Forbidden)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public abstract Task<ActionResult<List<TDocument>>> PatchMultipleDocuments([FromBody] List<Dto<TData>> dtos);
 
         /// <summary>
@@ -181,10 +181,10 @@ namespace Rested.Core.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status401Unauthorized)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status403Forbidden)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public abstract Task<ActionResult<TDocument>> DeleteDocument(
             [FromRoute] Guid id,
             [FromHeader] IfMatchByteArray etag);
@@ -197,10 +197,10 @@ namespace Rested.Core.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status401Unauthorized)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status403Forbidden)]
-        //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public abstract Task<ActionResult<List<TDocument>>> DeleteMultipleDocuments([FromBody] List<BaseDto> baseDtos);
 
         #endregion Methods

@@ -17,7 +17,5 @@ namespace Rested.Core.Commands
         where TCommand : ICommand<TResponse>
     {
         ServiceErrorCodes ServiceErrorCodes { get; }
-
-        void CheckDependencies();
     }
 }

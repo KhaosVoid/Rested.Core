@@ -2,6 +2,7 @@
 {
     public enum CommandActions
     {
+        Execute,
         Insert,
         Update,
         Patch,

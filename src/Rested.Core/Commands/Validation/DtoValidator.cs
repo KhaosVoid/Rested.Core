@@ -10,14 +10,14 @@ namespace Rested.Core.Commands.Validation
 
         public DtoValidator(CommandActions action, ServiceErrorCodes serviceErrorCodes)
         {
-            if (action is CommandActions.Insert or CommandActions.Update or CommandActions.Patch)
+            if (action is CommandActions.Insert or CommandActions.Update or CommandActions.Patch or CommandActions.Prune)
             {
                 RuleFor(dto => dto.Data)
                     .NotEmpty()
                     .WithServiceErrorCode(serviceErrorCodes.CommonErrorCodes.DataIsRequired);
             }
 
-            if (action is CommandActions.Update or CommandActions.Patch or CommandActions.Delete)
+            if (action is CommandActions.Update or CommandActions.Patch or CommandActions.Prune or CommandActions.Delete)
             {
                 RuleFor(dto => dto.Id)
                     .NotEmpty()

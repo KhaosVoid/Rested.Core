@@ -21,11 +21,13 @@ namespace Rested.Core.MSTest.Commands
         protected const string TESTCATEGORY_INSERT_VALIDATION_RULE_TESTS = "Insert Validation Rule Tests";
         protected const string TESTCATEGORY_UPDATE_VALIDATION_RULE_TESTS = "Update Validation Rule Tests";
         protected const string TESTCATEGORY_PATCH_VALIDATION_RULE_TESTS = "Patch Validation Rule Tests";
+        protected const string TESTCATEGORY_PRUNE_VALIDATION_RULE_TESTS = "Prune Validation Rule Tests";
         protected const string TESTCATEGORY_DELETE_VALIDATION_RULE_TESTS = "Delete Validation Rule Tests";
         protected const string TESTCATEGORY_EXECUTE_TESTS = "Execute Tests";
         protected const string TESTCATEGORY_INSERT_TESTS = "Insert Tests";
         protected const string TESTCATEGORY_UPDATE_TESTS = "Update Tests";
         protected const string TESTCATEGORY_PATCH_TESTS = "Patch Tests";
+        protected const string TESTCATEGORY_PRUNE_TESTS = "Prune Tests";
         protected const string TESTCATEGORY_DELETE_TESTS = "Delete Tests";
 
         #endregion Constants

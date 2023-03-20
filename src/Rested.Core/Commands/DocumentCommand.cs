@@ -52,6 +52,8 @@ namespace Rested.Core.Commands
 
         protected virtual void OnBeginHandle(TDocumentCommand command, TDocument document) { }
 
+        protected virtual void OnSetPrecalculatedProperties(TDocumentCommand command, TDocument document) { }
+
         protected abstract Task<TDocument> GetDocument(Guid id);
 
         protected virtual void OnHandleComplete(TDocumentCommand command, TDocument committedDocument) { }

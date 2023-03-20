@@ -6,6 +6,7 @@
         Insert,
         Update,
         Patch,
+        Prune,
         Delete
     }
 }

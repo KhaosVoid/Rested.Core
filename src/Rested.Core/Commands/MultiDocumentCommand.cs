@@ -52,6 +52,8 @@ namespace Rested.Core.Commands
 
         protected virtual void OnBeginHandle(TMultiDocumentCommand command, IEnumerable<TDocument> documents) { }
 
+        protected virtual void OnSetPrecalculatedProperties(TMultiDocumentCommand command, IEnumerable<TDocument> documents) { }
+
         protected abstract Task<List<TDocument>> GetDocuments(Guid[] ids);
 
         protected virtual void OnHandleComplete(TMultiDocumentCommand command, IEnumerable<TDocument> committedDocuments) { }

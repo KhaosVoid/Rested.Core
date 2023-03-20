@@ -10,7 +10,7 @@ namespace Rested.Core.Commands.Validation
     {
         public DocumentValidator(CommandActions action, ServiceErrorCodes serviceErrorCodes)
         {
-            if (action is CommandActions.Update or CommandActions.Patch or CommandActions.Delete)
+            if (action is CommandActions.Update or CommandActions.Patch or CommandActions.Prune or CommandActions.Delete)
             {
                 RuleFor(document => document.Id)
                     .NotEmpty()

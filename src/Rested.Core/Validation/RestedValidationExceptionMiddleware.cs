@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Rested.Core.CQRS.Validation;
 using System.Net;
 
 namespace Rested.Core.Validation

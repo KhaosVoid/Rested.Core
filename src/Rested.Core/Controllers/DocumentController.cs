@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Rested.Core.Data;
+using Rested.Core.CQRS.Data;
 using Rested.Core.Http;
 using System.Net.Mime;
 

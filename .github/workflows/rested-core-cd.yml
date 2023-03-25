@@ -30,19 +30,36 @@ jobs:
         NUGET_AUTH_TOKEN: ${{github.token}}
     - name: Restore (Rested.Core)
       run: dotnet restore Rested.Core
+    - name: Restore (Rested.Core.CQRS)
+      run: dotnet restore Rested.Core.CQRS
     - name: Restore (Rested.Core.MSTest)
       run: dotnet restore Rested.Core.MSTest
+    - name: Restore (Rested.Core.CQRS.MSTest)
+      run: dotnet restore Rested.Core.CQRS.MSTest
+
     - name: Build (Rested.Core)
-      run: dotnet build Rested.Core --configuration Release --no-restore
+      run: dotnet build Rested.Core --configuration Debug --no-restore
+    - name: Build (Rested.Core.CQRS)
+      run: dotnet build Rested.Core.CQRS --configuration Debug --no-restore
     - name: Build (Rested.Core.MSTest)
-      run: dotnet build Rested.Core.MSTest --configuration Release --no-restore
-    - name: Test (Rested.Core)
-      run: dotnet test Rested.Core --no-restore --verbosity normal
+      run: dotnet build Rested.Core.MSTest --configuration Debug --no-restore
+    - name: Build (Rested.Core.CQRS.MSTest)
+      run: dotnet build Rested.Core.CQRS.MSTest --configuration Debug --no-restore
+
     - name: Create NuGet Package (Rested.Core)
       run: dotnet pack Rested.Core --configuration Release --no-restore --version-suffix ${{github.run_number}}
+    - name: Create NuGet Package (Rested.Core.CQRS)
+      run: dotnet pack Rested.Core.CQRS --configuration Release --no-restore --version-suffix ${{github.run_number}}
     - name: Create NuGet Package (Rested.Core.MSTest)
       run: dotnet pack Rested.Core.MSTest --configuration Release --no-restore --version-suffix ${{github.run_number}}
-    - name: Publish NuGet package to GitHub Package Repository (Rested.Core)
+    - name: Create NuGet Package (Rested.Core.CQRS.MSTest)
+      run: dotnet pack Rested.Core.CQRS.MSTest --configuration Release --no-restore --version-suffix ${{github.run_number}}
+
+    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core)
       run: dotnet nuget push ./Rested.Core/bin/Release/*.nupkg
-    - name: Publish NuGet package to GitHub Package Repository (Rested.Core.MSTest)
+    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.CQRS)
+      run: dotnet nuget push ./Rested.Core.CQRS/bin/Release/*.nupkg
+    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.MSTest)
       run: dotnet nuget push ./Rested.Core.MSTest/bin/Release/*.nupkg
+    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.CQRS.MSTest)
+      run: dotnet nuget push ./Rested.Core.CQRS.MSTest/bin/Release/*.nupkg

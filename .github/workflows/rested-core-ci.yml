@@ -25,13 +25,21 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
+
     - name: Restore (Rested.Core)
       run: dotnet restore Rested.Core
+    - name: Restore (Rested.Core.CQRS)
+      run: dotnet restore Rested.Core.CQRS
     - name: Restore (Rested.Core.MSTest)
       run: dotnet restore Rested.Core.MSTest
+    - name: Restore (Rested.Core.CQRS.MSTest)
+      run: dotnet restore Rested.Core.CQRS.MSTest
+
     - name: Build (Rested.Core)
       run: dotnet build Rested.Core --configuration Debug --no-restore
+    - name: Build (Rested.Core.CQRS)
+      run: dotnet build Rested.Core.CQRS --configuration Debug --no-restore
     - name: Build (Rested.Core.MSTest)
       run: dotnet build Rested.Core.MSTest --configuration Debug --no-restore
-    - name: Test (Rested.Core)
-      run: dotnet test Rested.Core --no-restore --verbosity normal
+    - name: Build (Rested.Core.CQRS.MSTest)
+      run: dotnet build Rested.Core.CQRS.MSTest --configuration Debug --no-restore

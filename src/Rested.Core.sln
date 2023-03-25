@@ -7,6 +7,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core", "Rested.Core\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.MSTest", "Rested.Core.MSTest\Rested.Core.MSTest.csproj", "{E9B71356-B4A9-48FA-A952-81B224BE6CD1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{555DCE30-ECE3-4516-BA6C-AC3458158A61}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rested.Core.CQRS", "Rested.Core.CQRS\Rested.Core.CQRS.csproj", "{EFB50D8C-71A6-41B6-8821-C1105C754C71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Workflows", "GitHub Workflows", "{D23E61BB-20F9-4826-92D5-A828F557A523}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\rested-core-cd.yml = ..\.github\workflows\rested-core-cd.yml
+		..\.github\workflows\rested-core-ci.yml = ..\.github\workflows\rested-core-ci.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rested.Core.CQRS.MSTest", "Rested.Core.CQRS.MSTest\Rested.Core.CQRS.MSTest.csproj", "{982AD58A-D6BE-43D6-84A5-923AF2BF872A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +36,20 @@ Global
 		{E9B71356-B4A9-48FA-A952-81B224BE6CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9B71356-B4A9-48FA-A952-81B224BE6CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9B71356-B4A9-48FA-A952-81B224BE6CD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB50D8C-71A6-41B6-8821-C1105C754C71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB50D8C-71A6-41B6-8821-C1105C754C71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB50D8C-71A6-41B6-8821-C1105C754C71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB50D8C-71A6-41B6-8821-C1105C754C71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{982AD58A-D6BE-43D6-84A5-923AF2BF872A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{982AD58A-D6BE-43D6-84A5-923AF2BF872A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{982AD58A-D6BE-43D6-84A5-923AF2BF872A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{982AD58A-D6BE-43D6-84A5-923AF2BF872A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D23E61BB-20F9-4826-92D5-A828F557A523} = {555DCE30-ECE3-4516-BA6C-AC3458158A61}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A968AEA7-8259-4DA5-9085-CA2C2001861A}

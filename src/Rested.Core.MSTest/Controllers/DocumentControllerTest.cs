@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
-using Rested.Core.Commands;
 using Rested.Core.Controllers;
-using Rested.Core.Data;
+using Rested.Core.CQRS.Commands;
+using Rested.Core.CQRS.Data;
+using Rested.Core.CQRS.Queries;
 using Rested.Core.Http;
-using Rested.Core.Queries;
 using System.Reflection;
 
 namespace Rested.Core.MSTest.Controllers

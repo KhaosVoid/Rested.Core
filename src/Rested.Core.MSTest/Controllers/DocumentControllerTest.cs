@@ -409,8 +409,7 @@ namespace Rested.Core.MSTest.Controllers
                 .DeleteDocument(
                     id: TestDocuments.First().Id,
                     etag: new IfMatchByteArray(TestDocuments.First().ETag))
-                .Result
-                .Result as NoContentResult;
+                .Result;
 
             response.Should().NotBeNull(because: ASSERTMSG_RESPONSE_SHOULD_NOT_BE_NULL);
             response.StatusCode.Should().Be(StatusCodes.Status204NoContent);
@@ -430,8 +429,7 @@ namespace Rested.Core.MSTest.Controllers
 
             var response = CreateController()
                 .DeleteMultipleDocuments(BaseDto.ToList(TestDtos))
-                .Result
-                .Result as NoContentResult;
+                .Result;
 
             response.Should().NotBeNull(because: ASSERTMSG_RESPONSE_SHOULD_NOT_BE_NULL);
             response.StatusCode.Should().Be(StatusCodes.Status204NoContent);

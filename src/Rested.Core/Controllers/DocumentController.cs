@@ -185,7 +185,7 @@ namespace Rested.Core.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public abstract Task<ActionResult<TDocument>> DeleteDocument(
+        public abstract Task<NoContentResult> DeleteDocument(
             [FromRoute] Guid id,
             [FromHeader] IfMatchByteArray etag);
 
@@ -193,7 +193,7 @@ namespace Rested.Core.Controllers
         /// Deletes multiple Documents.
         /// </summary>
         /// <param name="baseDtos">The list of base dtos to delete multiple Documents with.</param>
-        [HttpDelete("[controller]s")]
+        [HttpPost("[controller]s/delete")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -201,7 +201,7 @@ namespace Rested.Core.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public abstract Task<ActionResult<List<TDocument>>> DeleteMultipleDocuments([FromBody] List<BaseDto> baseDtos);
+        public abstract Task<NoContentResult> DeleteMultipleDocuments([FromBody] List<BaseDto> baseDtos);
 
         #endregion Methods
     }

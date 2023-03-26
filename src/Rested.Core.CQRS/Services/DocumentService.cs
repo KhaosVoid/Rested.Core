@@ -160,9 +160,15 @@ namespace Rested.Core.CQRS.Services
 
         public virtual async Task<List<TDocument>> DeleteMultipleDocuments(List<BaseDto> baseDtos)
         {
-            //TODO: DELETE seemingly should not have a body content?
-            //      RFCs and Microsoft's client-side implementations seem to suggest it is discouraged/not supported...
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync(
+                    requestUri: $"{typeof(TData).Name}s/delete",
+                    value: baseDtos);
+
+                return await response.Content.ReadFromJsonAsync<List<TDocument>>();
+            }
+            catch { throw; }
         }
 
         #endregion Methods

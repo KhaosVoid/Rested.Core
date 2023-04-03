@@ -1,6 +1,4 @@
-﻿using Rested.Core.CQRS.Data;
-
-namespace Rested.Core.Data
+﻿namespace Rested.Core.CQRS.Data
 {
     public class DocumentAuditingService : IDocumentAuditingService
     {

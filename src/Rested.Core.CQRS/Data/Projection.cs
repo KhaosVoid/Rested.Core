@@ -27,7 +27,7 @@ namespace Rested.Core.CQRS.Data
 
         public static Expression<Func<TDocument, TProjection>> GetProjectionExpression<TProjection, TDocument>()
         {
-            var parameterExpression = Expression.Parameter(typeof(TDocument), "document");
+            var parameterExpression = Expression.Parameter(typeof(TDocument));
             var projectionMappings = ProjectionMappings.GetProjectionMappings<TProjection>();
             var memberBindings = new List<MemberBinding>();
 

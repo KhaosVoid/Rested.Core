@@ -1,4 +1,4 @@
-﻿namespace Rested.Core.Data
+﻿namespace Rested.Core.CQRS.Data
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class BsonCollectionAttribute : Attribute

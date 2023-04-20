@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rested.Core.CQRS", "Rested.Core.CQRS\Rested.Core.CQRS.csproj", "{EFB50D8C-71A6-41B6-8821-C1105C754C71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.CQRS", "Rested.Core.CQRS\Rested.Core.CQRS.csproj", "{EFB50D8C-71A6-41B6-8821-C1105C754C71}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Workflows", "GitHub Workflows", "{D23E61BB-20F9-4826-92D5-A828F557A523}"
 	ProjectSection(SolutionItems) = preProject
@@ -20,7 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Workflows", "GitHub 
 		..\.github\workflows\rested-core-ci.yml = ..\.github\workflows\rested-core-ci.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rested.Core.CQRS.MSTest", "Rested.Core.CQRS.MSTest\Rested.Core.CQRS.MSTest.csproj", "{982AD58A-D6BE-43D6-84A5-923AF2BF872A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.CQRS.MSTest", "Rested.Core.CQRS.MSTest\Rested.Core.CQRS.MSTest.csproj", "{982AD58A-D6BE-43D6-84A5-923AF2BF872A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

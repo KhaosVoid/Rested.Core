@@ -29,8 +29,8 @@ namespace Rested.Core.MSTest.Queries
         #region Properties
 
         public TestContext TestContext { get; set; }
-        public List<TDocument> TestDocuments { get; set; }
-        public List<TProjection> TestProjections { get; set; }
+        protected List<TDocument> TestDocuments { get; set; }
+        protected List<TProjection> TestProjections { get; set; }
 
         #endregion Properties
 

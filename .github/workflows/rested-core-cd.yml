@@ -28,6 +28,8 @@ jobs:
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
       env:
         NUGET_AUTH_TOKEN: ${{github.token}}
+
+    # Restore
     - name: Restore (Rested.Core)
       run: dotnet restore Rested.Core
     - name: Restore (Rested.Core.CQRS)
@@ -37,6 +39,7 @@ jobs:
     - name: Restore (Rested.Core.CQRS.MSTest)
       run: dotnet restore Rested.Core.CQRS.MSTest
 
+    # Build
     - name: Build (Rested.Core)
       run: dotnet build Rested.Core --configuration Release --no-restore
     - name: Build (Rested.Core.CQRS)
@@ -46,6 +49,11 @@ jobs:
     - name: Build (Rested.Core.CQRS.MSTest)
       run: dotnet build Rested.Core.CQRS.MSTest --configuration Release --no-restore
 
+    # Test
+    - name: Test (Rested.Core.UnitTest)
+      run: dotnet test Rested.Core.UnitTest --no-restore --verbosity normal
+
+    # Create NuGet Packages
     - name: Create NuGet Package (Rested.Core)
       run: dotnet pack Rested.Core --configuration Release --no-restore --version-suffix ${{github.run_number}}
     - name: Create NuGet Package (Rested.Core.CQRS)
@@ -55,6 +63,7 @@ jobs:
     - name: Create NuGet Package (Rested.Core.CQRS.MSTest)
       run: dotnet pack Rested.Core.CQRS.MSTest --configuration Release --no-restore --version-suffix ${{github.run_number}}
 
+    # Publish NuGet Packages
     - name: Publish NuGet Package to GitHub Package Repository (Rested.Core)
       run: dotnet nuget push ./Rested.Core/bin/Release/*.nupkg
     - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.CQRS)

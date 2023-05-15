@@ -218,7 +218,7 @@ namespace Rested.Core.CQRS.Queries
 
         protected abstract Task<TSearchResults> GetSearchResults(TSearchQuery query);
 
-        protected virtual void OnHandleComplete(TSearchQuery query, TSearchResults searchDocumentsResults) { }
+        protected virtual void OnHandleComplete(TSearchQuery query, TSearchResults searchResults) { }
 
         #endregion Methods
     }

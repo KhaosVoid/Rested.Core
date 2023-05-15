@@ -28,7 +28,7 @@ namespace Rested.Core.MSTest.Queries
         #region Properties
 
         public TestContext TestContext { get; set; }
-        public List<TDocument> TestDocuments { get; set; }
+        protected List<TDocument> TestDocuments { get; set; }
 
         #endregion Properties
 
@@ -62,7 +62,7 @@ namespace Rested.Core.MSTest.Queries
             TestContext.WriteLine("Initializing Mock Dependencies...");
             OnInitializeMockDependencies();
 
-            TestContext.WriteLine("Initializing Test Documents");
+            TestContext.WriteLine("Initializing Test Documents...");
             OnInitializeTestDocuments();
         }
 

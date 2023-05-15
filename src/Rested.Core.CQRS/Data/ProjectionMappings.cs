@@ -59,8 +59,22 @@ namespace Rested.Core.CQRS.Data
             projectionTypeMappings.Add(projectionMapping);
         }
 
-        public static bool TryGetMapping<TProjection>(string projectionPropertyPath, out ProjectionMapping projectionMapping, bool isCamelCase = false) =>
-            TryGetMapping(typeof(TProjection), projectionPropertyPath, out projectionMapping, isCamelCase);
+        public static bool TryGetMapping<TProjection, TProjectionValue>(
+            Expression<Func<TProjection, TProjectionValue>> projectionPropertySelector,
+            out ProjectionMapping projectionMapping)
+        {
+            return TryGetMapping<TProjection>(
+                projectionPropertyPath: ProjectionMapping.ExpressionToPropertyPath(projectionPropertySelector),
+                out projectionMapping);
+        }
+
+        public static bool TryGetMapping<TProjection>(
+            string projectionPropertyPath,
+            out ProjectionMapping projectionMapping,
+            bool isCamelCase = false)
+        {
+            return TryGetMapping(typeof(TProjection), projectionPropertyPath, out projectionMapping, isCamelCase);
+        }
 
         public static bool TryGetMapping(Type projectionType, string projectionPropertyPath, out ProjectionMapping projectionMapping, bool isCamelCase = false)
         {

@@ -62,7 +62,7 @@ namespace Rested.Core.MSTest.Queries
             TestContext.WriteLine("Initializing Mock Dependencies...");
             OnInitializeMockDependencies();
 
-            TestContext.WriteLine("Initializing Test Documents");
+            TestContext.WriteLine("Initializing Test Documents...");
             OnInitializeTestDocuments();
         }
 

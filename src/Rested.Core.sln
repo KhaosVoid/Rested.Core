@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Workflows", "GitHub 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.CQRS.MSTest", "Rested.Core.CQRS.MSTest\Rested.Core.CQRS.MSTest.csproj", "{982AD58A-D6BE-43D6-84A5-923AF2BF872A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rested.Core.UnitTest", "Rested.Core.UnitTest\Rested.Core.UnitTest.csproj", "{29916E94-4809-4628-A394-378602786CDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{982AD58A-D6BE-43D6-84A5-923AF2BF872A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{982AD58A-D6BE-43D6-84A5-923AF2BF872A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{982AD58A-D6BE-43D6-84A5-923AF2BF872A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29916E94-4809-4628-A394-378602786CDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29916E94-4809-4628-A394-378602786CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29916E94-4809-4628-A394-378602786CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29916E94-4809-4628-A394-378602786CDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

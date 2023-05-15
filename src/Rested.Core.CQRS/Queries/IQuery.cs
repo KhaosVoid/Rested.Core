@@ -17,7 +17,5 @@ namespace Rested.Core.CQRS.Queries
         where TQuery : IQuery<TResponse>
     {
         ServiceErrorCodes ServiceErrorCodes { get; }
-
-        void CheckDependencies();
     }
 }

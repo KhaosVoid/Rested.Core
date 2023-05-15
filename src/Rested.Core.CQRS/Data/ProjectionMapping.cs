@@ -29,7 +29,7 @@ namespace Rested.Core.CQRS.Data
 
         #region Methods
 
-        private string ExpressionToPropertyPath(Expression expression)
+        public static string ExpressionToPropertyPath(Expression expression)
         {
             return string.Join(".", expression.ToString().Split('.').Skip(1));
         }

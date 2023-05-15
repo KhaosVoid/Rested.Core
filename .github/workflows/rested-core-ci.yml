@@ -26,6 +26,7 @@ jobs:
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
 
+    # Restore
     - name: Restore (Rested.Core)
       run: dotnet restore Rested.Core
     - name: Restore (Rested.Core.CQRS)
@@ -35,6 +36,7 @@ jobs:
     - name: Restore (Rested.Core.CQRS.MSTest)
       run: dotnet restore Rested.Core.CQRS.MSTest
 
+    # Build
     - name: Build (Rested.Core)
       run: dotnet build Rested.Core --configuration Debug --no-restore
     - name: Build (Rested.Core.CQRS)
@@ -43,3 +45,7 @@ jobs:
       run: dotnet build Rested.Core.MSTest --configuration Debug --no-restore
     - name: Build (Rested.Core.CQRS.MSTest)
       run: dotnet build Rested.Core.CQRS.MSTest --configuration Debug --no-restore
+
+    # Test
+    - name: Test (Rested.Core.UnitTest)
+      run: dotnet test Rested.Core.UnitTest --no-restore --verbosity normal

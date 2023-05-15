@@ -85,7 +85,7 @@ namespace Rested.Core.CQRS.Queries
 
         protected abstract Task<List<TProjection>> GetProjections();
 
-        protected virtual void OnHandleComplete(TGetProjectionsQuery query, List<TProjection> queriedProjections) { }
+        protected virtual void OnHandleComplete(TGetProjectionsQuery query, IEnumerable<TProjection> queriedProjections) { }
 
         #endregion Methods
     }

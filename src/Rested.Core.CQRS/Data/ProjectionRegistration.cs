@@ -9,26 +9,26 @@ namespace Rested.Core.CQRS.Data
 
         public ProjectionRegistration()
         {
-            InitializeStaticConstructorsOnProjections(
+            InvokeStaticConstructorOnProjections(
                 assemblies: AppDomain.CurrentDomain.GetAssemblies());
         }
 
         public ProjectionRegistration(Assembly assembly)
         {
-            InitializeStaticConstructorsOnProjections(
+            InvokeStaticConstructorOnProjections(
                 assemblies: new Assembly[] { assembly });
         }
 
         public ProjectionRegistration(Assembly[] assemblies)
         {
-            InitializeStaticConstructorsOnProjections(assemblies);
+            InvokeStaticConstructorOnProjections(assemblies);
         }
 
         #endregion Ctor
 
         #region Methods
 
-        private void InitializeStaticConstructorsOnProjections(Assembly[] assemblies)
+        private void InvokeStaticConstructorOnProjections(Assembly[] assemblies)
         {
             var projectionTypes = GetDerivedProjections(assemblies);
 

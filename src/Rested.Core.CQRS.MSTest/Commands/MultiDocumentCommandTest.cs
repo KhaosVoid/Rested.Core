@@ -50,8 +50,6 @@ namespace Rested.Core.CQRS.MSTest.Commands
         protected string GenerateNameFromData(int number = 1) => TestingUtils.GenerateNameFromData<TData>(number);
         protected string GenerateDescriptionFromData(int number = 1) => TestingUtils.GenerateDescriptionFromData<TData>(number);
 
-
-
         protected void TestCommandValidationRule(CommandActions action, ServiceErrorCode serviceErrorCode, bool duplicateRules = false, params object[] messageFormatArgs)
         {
             var validationResult = ExecuteCommandValidation(action);
@@ -74,17 +72,7 @@ namespace Rested.Core.CQRS.MSTest.Commands
 
             else
             {
-                validationResult.Errors.Count.Should().Be(
-                    expected: 1,
-                    because: ASSERTMSG_ONLY_ONE_VALIDATION_ERROR);
-
-                validationResult.Errors.First().ErrorMessage.Should().Be(
-                    expected: string.Format(serviceErrorCode.Message, messageFormatArgs),
-                    because: ASSERTMSG_VALIDATION_ERROR_MESSAGE_SHOULD_MATCH);
-
-                validationResult.Errors.First().ErrorCode.Should().Be(
-                    expected: serviceErrorCode.ExtendedStatusCode,
-                    because: ASSERTMSG_VALIDATION_ERROR_CODE_SHOULD_MATCH);
+                TestCommandValidationRule(action, serviceErrorCode, messageFormatArgs);
             }
         }
 

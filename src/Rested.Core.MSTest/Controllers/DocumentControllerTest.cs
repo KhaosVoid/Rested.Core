@@ -28,8 +28,8 @@ namespace Rested.Core.MSTest.Controllers
         #region Properties
 
         public TestContext TestContext { get; set; }
-        public List<Dto<TData>> TestDtos { get; set; }
-        public List<TDocument> TestDocuments { get; set; }
+        protected List<Dto<TData>> TestDtos { get; set; }
+        protected List<TDocument> TestDocuments { get; set; }
 
         #endregion Properties
 
@@ -67,9 +67,6 @@ namespace Rested.Core.MSTest.Controllers
             TestContext.WriteLine("Initializing Mock Dependencies...");
             OnInitializeMockDependencies();
 
-            TestContext.WriteLine("Initializing Test Dtos...");
-            OnInitializeTestDtos();
-
             TestContext.WriteLine("Initializing Test Documents...");
             OnInitializeTestDocuments();
         }
@@ -79,11 +76,6 @@ namespace Rested.Core.MSTest.Controllers
             _mediatorMock = Substitute.For<IMediator>();
             _httpContextMock = Substitute.For<IHttpContextAccessor>();
             _loggerFactoryMock = Substitute.For<ILoggerFactory>();
-        }
-
-        protected virtual void OnInitializeTestDtos()
-        {
-            TestDtos = InitializeTestData().Select(CreateDto).ToList();
         }
 
         protected virtual void OnInitializeTestDocuments()
@@ -101,6 +93,11 @@ namespace Rested.Core.MSTest.Controllers
 
                     return document;
                 }).ToList();
+        }
+
+        protected virtual void OnInitializeTestDtos()
+        {
+            TestDtos = InitializeTestData().Select(CreateDto).ToList();
         }
 
         protected abstract List<TData> InitializeTestData();

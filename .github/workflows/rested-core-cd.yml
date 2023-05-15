@@ -38,6 +38,8 @@ jobs:
       run: dotnet restore Rested.Core.MSTest
     - name: Restore (Rested.Core.CQRS.MSTest)
       run: dotnet restore Rested.Core.CQRS.MSTest
+    - name: Restore (Rested.Core.UnitTest)
+      run: dotnet restore Rested.Core.UnitTest
 
     # Build
     - name: Build (Rested.Core)
@@ -48,6 +50,8 @@ jobs:
       run: dotnet build Rested.Core.MSTest --configuration Release --no-restore
     - name: Build (Rested.Core.CQRS.MSTest)
       run: dotnet build Rested.Core.CQRS.MSTest --configuration Release --no-restore
+    - name: Build (Rested.Core.UnitTest)
+      run: dotnet build Rested.Core.UnitTest --configuration Release --no-restore
 
     # Test
     - name: Test (Rested.Core.UnitTest)

@@ -9,7 +9,7 @@ namespace Rested.Core.CQRS.Data
         public Type ProjectionType { get; }
         public Expression ProjectionPropertySelector { get; }
         public string ProjectionPropertyPath { get; }
-        public Expression DocumentPropertyPathSelector { get; }
+        public Expression DocumentPropertySelector { get; }
         public string DocumentPropertyPath { get; }
 
         #endregion Properties
@@ -21,7 +21,7 @@ namespace Rested.Core.CQRS.Data
             ProjectionType = projectionType;
             ProjectionPropertySelector = projectionPropertySelector;
             ProjectionPropertyPath = ExpressionToPropertyPath(projectionPropertySelector);
-            DocumentPropertyPathSelector = documentPropertySelector;
+            DocumentPropertySelector = documentPropertySelector;
             DocumentPropertyPath = ExpressionToPropertyPath(documentPropertySelector);
         }
 

@@ -34,7 +34,7 @@ namespace Rested.Core.CQRS.Data
             foreach (var projectionMapping in projectionMappings)
             {
                 var projectionPropertyLambdaExpression = (LambdaExpression)projectionMapping.ProjectionPropertySelector;
-                var documentPropertyLambdaExpression = (LambdaExpression)projectionMapping.DocumentPropertyPathSelector;
+                var documentPropertyLambdaExpression = (LambdaExpression)projectionMapping.DocumentPropertySelector;
                 var memberAssignment = Expression.Bind(
                     member: (PropertyInfo)((MemberExpression)projectionPropertyLambdaExpression.Body).Member,
                     expression: ExpressionParameterReplacer.Replace(parameterExpression, documentPropertyLambdaExpression.Body));

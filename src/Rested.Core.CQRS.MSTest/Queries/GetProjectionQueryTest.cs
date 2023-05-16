@@ -7,6 +7,7 @@ using Rested.Core.CQRS.Data;
 using Rested.Core.CQRS.MSTest;
 using Rested.Core.CQRS.Queries;
 using Rested.Core.CQRS.Validation;
+using System.Reflection;
 
 namespace Rested.Core.MSTest.Queries
 {
@@ -68,7 +69,7 @@ namespace Rested.Core.MSTest.Queries
             OnInitializeTestDocument();
 
             TestContext.WriteLine("Initializing Projection Registration...");
-            ProjectionRegistration.Initialize();
+            ProjectionRegistration.Initialize(Assembly.GetExecutingAssembly());
 
             TestContext.WriteLine("Initializing Test Projection...");
             OnInitializeTestProjection();

@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rested.Core.CQRS.Data;
 using Rested.Core.UnitTest.Data;
+using System.Reflection;
 
 namespace Rested.Core.UnitTest.Tests.Data.Projections
 {
@@ -36,7 +37,7 @@ namespace Rested.Core.UnitTest.Tests.Data.Projections
         protected virtual void OnInitialize()
         {
             TestContext.WriteLine("Initializing Projection Registration...");
-            ProjectionRegistration.Initialize();
+            ProjectionRegistration.Initialize(Assembly.GetExecutingAssembly());
         }
 
         #endregion Initialization

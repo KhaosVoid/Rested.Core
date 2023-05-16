@@ -16,7 +16,7 @@ namespace Rested.Core.MSTest.Controllers
         where TData : IData
         where TDocument : IDocument<TData>
         where TProjection : Projection
-        where TProjectionController : ProjectionController<TData, TProjection>
+        where TProjectionController : ProjectionController<TProjection>
     {
         #region Constants
 
@@ -27,8 +27,8 @@ namespace Rested.Core.MSTest.Controllers
         #region Properties
 
         public TestContext TestContext { get; set; }
-        public List<TDocument> TestDocuments { get; set; }
-        public List<TProjection> TestProjections { get; set; }
+        protected List<TDocument> TestDocuments { get; set; }
+        protected List<TProjection> TestProjections { get; set; }
 
         #endregion Properties
 
@@ -70,7 +70,7 @@ namespace Rested.Core.MSTest.Controllers
             OnInitializeTestDocuments();
 
             TestContext.WriteLine("Initializing Projection Registration...");
-            ProjectionRegistration.Initialize();
+            ProjectionRegistration.Initialize(Assembly.GetExecutingAssembly());
 
             TestContext.WriteLine("Initializing Test Projections...");
             OnInitializeTestProjections();
@@ -165,7 +165,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(GetProjection),
-                controllerMethodName: nameof(ProjectionController<TData, TProjection>.GetProjection));
+                controllerMethodName: nameof(ProjectionController<TProjection>.GetProjection));
 
             _mediatorMock
                 .Send(Arg.Any<GetProjectionQuery<TData, TProjection>>())
@@ -187,7 +187,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(GetProjections),
-                controllerMethodName: nameof(ProjectionController<TData, TProjection>.GetProjections));
+                controllerMethodName: nameof(ProjectionController<TProjection>.GetProjections));
 
             _mediatorMock
                 .Send(Arg.Any<GetProjectionsQuery<TData, TProjection>>())
@@ -209,7 +209,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(SearchProjections),
-                controllerMethodName: nameof(ProjectionController<TData, TProjection>.SearchProjections));
+                controllerMethodName: nameof(ProjectionController<TProjection>.SearchProjections));
 
             var searchRequest = new SearchRequest()
             {
@@ -217,7 +217,7 @@ namespace Rested.Core.MSTest.Controllers
                 PageSize = 25
             };
 
-            var searchProjectionsResults = new SearchProjectionsResults<TData, TProjection>(searchRequest)
+            var searchProjectionsResults = new SearchProjectionsResults<TProjection>(searchRequest)
             {
                 TotalPages = 1,
                 TotalQueriedRecords = TestProjections.Count,
@@ -236,7 +236,7 @@ namespace Rested.Core.MSTest.Controllers
 
             response.Should().NotBeNull(because: ASSERTMSG_RESPONSE_SHOULD_NOT_BE_NULL);
             response.StatusCode.Should().Be(StatusCodes.Status200OK);
-            response.Value.As<SearchProjectionsResults<TData, TProjection>>().Should().BeEquivalentTo(searchProjectionsResults);
+            response.Value.As<SearchProjectionsResults<TProjection>>().Should().BeEquivalentTo(searchProjectionsResults);
         }
 
         #endregion Controller Tests

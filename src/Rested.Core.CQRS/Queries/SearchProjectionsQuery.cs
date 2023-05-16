@@ -4,7 +4,7 @@ using Rested.Core.CQRS.Data;
 namespace Rested.Core.CQRS.Queries
 {
     public abstract class SearchProjectionsQuery<TData, TProjection> :
-        SearchQuery<TProjection, SearchProjectionsResults<TData, TProjection>>
+        SearchQuery<TProjection, SearchProjectionsResults<TProjection>>
         where TData : IData
         where TProjection : Projection
     {
@@ -20,7 +20,7 @@ namespace Rested.Core.CQRS.Queries
     }
 
     public abstract class SearchProjectionsQueryValidator<TData, TProjection, TSearchProjectionsQuery> :
-        SearchQueryValidator<TProjection, SearchProjectionsResults<TData, TProjection>, TSearchProjectionsQuery>
+        SearchQueryValidator<TProjection, SearchProjectionsResults<TProjection>, TSearchProjectionsQuery>
         where TData : IData
         where TProjection : Projection
         where TSearchProjectionsQuery : SearchProjectionsQuery<TData, TProjection>
@@ -36,7 +36,7 @@ namespace Rested.Core.CQRS.Queries
     }
 
     public abstract class SearchProjectionsQueryHandler<TData, TProjection, TSearchProjectionsQuery> :
-        SearchQueryHandler<TProjection, SearchProjectionsResults<TData, TProjection>, TSearchProjectionsQuery>
+        SearchQueryHandler<TProjection, SearchProjectionsResults<TProjection>, TSearchProjectionsQuery>
         where TData : IData
         where TProjection : Projection
         where TSearchProjectionsQuery : SearchProjectionsQuery<TData, TProjection>

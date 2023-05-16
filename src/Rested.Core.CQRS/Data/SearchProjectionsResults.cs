@@ -1,7 +1,7 @@
 ﻿namespace Rested.Core.CQRS.Data
 {
-    public class SearchProjectionsResults<TData, TProjection> : SearchResults<TProjection>
-        where TData : IData
+    public class SearchProjectionsResults<TProjection> :
+        SearchResults<TProjection>
         where TProjection : Projection
     {
         #region Ctor

@@ -10,7 +10,7 @@ namespace Rested.Core.UnitTest.Data
         public string? FullName { get; set; }
         public int? Age { get; set; }
         public DateTime? DOB { get; set; }
-        public DateTime? StartDate { get; set; }
+        public DateOnly? StartDate { get; set; }
         public EmploymentTypes? EmploymentType { get; set; }
 
         #endregion Properties

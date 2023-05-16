@@ -7,8 +7,8 @@ using System.Net.Mime;
 
 namespace Rested.Core.Controllers
 {
-    public abstract class ProjectionController<TData, TProjection> : ControllerBase
-        where TData : IData
+    public abstract class ProjectionController<TProjection> :
+        ControllerBase
         where TProjection : Projection
     {
         #region Members
@@ -78,7 +78,7 @@ namespace Rested.Core.Controllers
         //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status401Unauthorized)]
         //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status403Forbidden)]
         //[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
-        public abstract Task<ActionResult<SearchProjectionsResults<TData, TProjection>>> SearchProjections([FromBody] SearchRequest searchRequest);
+        public abstract Task<ActionResult<SearchProjectionsResults<TProjection>>> SearchProjections([FromBody] SearchRequest searchRequest);
 
         #endregion Methods
     }

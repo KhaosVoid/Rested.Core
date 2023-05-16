@@ -67,8 +67,8 @@ namespace Rested.Core.MSTest.Queries
             TestContext.WriteLine("Initializing Test Documents...");
             OnInitializeTestDocuments();
 
-            TestContext.WriteLine("Registering Projection Mappings...");
-            RegisterProjectionMappings();
+            TestContext.WriteLine("Initializing Projection Registration...");
+            ProjectionRegistration.Initialize();
 
             TestContext.WriteLine("Initializing Test Projections...");
             OnInitializeTestProjections();
@@ -80,12 +80,6 @@ namespace Rested.Core.MSTest.Queries
         }
 
         protected abstract void OnInitializeTestDocuments();
-
-        private void RegisterProjectionMappings()
-        {
-            _ = new ProjectionRegistration();
-        }
-
         protected abstract void OnInitializeTestProjections();
         protected abstract List<TData> InitializeTestData();
 

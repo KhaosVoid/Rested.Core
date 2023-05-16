@@ -45,7 +45,7 @@ namespace Rested.Core.CQRS.Data
             var expressionLambda = Expression.Lambda<Func<TDocument, TProjection>>(
                 body: Expression.MemberInit(
                     newExpression: Expression.New(typeof(TProjection)),
-                    memberBindings),
+                    bindings: memberBindings),
                 parameters: new[] { parameterExpression });
 
             return expressionLambda;

@@ -33,7 +33,11 @@ namespace Rested.Core.UnitTest.Tests.Data.Projections
             OnInitialize();
         }
 
-        protected virtual void OnInitialize() { }
+        protected virtual void OnInitialize()
+        {
+            TestContext.WriteLine("Initializing Projection Registration...");
+            ProjectionRegistration.Initialize();
+        }
 
         #endregion Initialization
 
@@ -54,8 +58,6 @@ namespace Rested.Core.UnitTest.Tests.Data.Projections
         [TestMethod]
         public void CanInvokeStaticConstructorOnProjections()
         {
-            ProjectionTestingUtils.InitilizeProjectionRegistration();
-
             ProjectionMappings
                 .GetProjectionMappings<EmployeeProjection>()
                 .Should()

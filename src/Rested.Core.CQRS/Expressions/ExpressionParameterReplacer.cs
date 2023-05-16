@@ -6,15 +6,15 @@ namespace Rested.Core.CQRS.Expressions
     {
         #region Members
 
-        private readonly ParameterExpression _parameter;
+        private readonly ParameterExpression _parameterExpression;
 
         #endregion Members
 
         #region Ctor
 
-        internal ExpressionParameterReplacer(ParameterExpression parameter)
+        internal ExpressionParameterReplacer(ParameterExpression parameterExpression)
         {
-            _parameter = parameter;
+            _parameterExpression = parameterExpression;
         }
 
         #endregion Ctor
@@ -24,7 +24,7 @@ namespace Rested.Core.CQRS.Expressions
         internal static Expression Replace(ParameterExpression parameterExpression, Expression expression) =>
             new ExpressionParameterReplacer(parameterExpression).Visit(expression);
 
-        protected override Expression VisitParameter(ParameterExpression node) => base.VisitParameter(_parameter);
+        protected override Expression VisitParameter(ParameterExpression node) => base.VisitParameter(_parameterExpression);
 
         #endregion Methods
     }

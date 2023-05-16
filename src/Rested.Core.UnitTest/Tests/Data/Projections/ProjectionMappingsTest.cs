@@ -33,10 +33,7 @@ namespace Rested.Core.UnitTest.Tests.Data.Projections
             OnInitialize();
         }
 
-        protected virtual void OnInitialize()
-        {
-
-        }
+        protected virtual void OnInitialize() { }
 
         #endregion Initialization
 

@@ -4,11 +4,11 @@ namespace Rested.Core.CQRS.Data
 {
     public static class ProjectionMappings
     {
-        #region Properties
+        #region Members
 
         private static Dictionary<Type, List<ProjectionMapping>> _registeredMappings;
 
-        #endregion Properties
+        #endregion Members
 
         #region Ctor
 
@@ -31,7 +31,7 @@ namespace Rested.Core.CQRS.Data
 
             var projectionTypeMappings = _registeredMappings[type];
             var projectionMapping = projectionTypeMappings
-                .FirstOrDefault(map => map.ProjectionPropertyPath == projectionPropertyPath);
+                .FirstOrDefault(map => map.ProjectionPropertyPath.Equals(projectionPropertyPath));
 
             if (projectionMapping is null)
                 return false;
@@ -42,12 +42,12 @@ namespace Rested.Core.CQRS.Data
         public static void Register<TProjection, TDocument, TProjectionValue, TDocumentValue>(
             Expression<Func<TProjection, TProjectionValue>> projectionPropertySelector,
             Expression<Func<TDocument, TDocumentValue>> documentPropertySelector)
+            where TDocumentValue : TProjectionValue
         {
             if (!_registeredMappings.ContainsKey(typeof(TProjection)))
                 _registeredMappings.Add(typeof(TProjection), new List<ProjectionMapping>());
 
             var projectionTypeMappings = _registeredMappings[typeof(TProjection)];
-
             var projectionMapping = new ProjectionMapping(typeof(TProjection), projectionPropertySelector, documentPropertySelector);
 
             if (ContainsMapping<TProjection>(projectionMapping.ProjectionPropertyPath))
@@ -82,13 +82,14 @@ namespace Rested.Core.CQRS.Data
                 throw new ProjectionMappingNotRegisteredException(projectionType, projectionPropertyPath);
 
             var projectionTypeMappings = _registeredMappings[projectionType];
+
             projectionMapping = projectionTypeMappings
                 .FirstOrDefault(map =>
                 {
                     if (isCamelCase)
-                        return map.ProjectionPropertyPath.ToCamelCase() == projectionPropertyPath;
+                        return map.ProjectionPropertyPath.ToCamelCase().Equals(projectionPropertyPath);
 
-                    return map.ProjectionPropertyPath == projectionPropertyPath;
+                    return map.ProjectionPropertyPath.Equals(projectionPropertyPath);
                 });
 
             if (projectionMapping is null)

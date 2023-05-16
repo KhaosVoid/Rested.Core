@@ -35,7 +35,8 @@ namespace Rested.Core.UnitTest.Tests.Data.Projections
 
         protected virtual void OnInitialize()
         {
-
+            TestContext.WriteLine("Initializing Projection Registration...");
+            ProjectionRegistration.Initialize();
         }
 
         #endregion Initialization
@@ -57,8 +58,6 @@ namespace Rested.Core.UnitTest.Tests.Data.Projections
         [TestMethod]
         public void CanGetProjectionExpression()
         {
-            ProjectionTestingUtils.InitilizeProjectionRegistration();
-
             var projectionExpression = Projection.GetProjectionExpression<EmployeeProjection, IDocument<Employee>>();
             var employeeDocumentMock = NSubstitute.Substitute.For<IDocument<Employee>>();
 

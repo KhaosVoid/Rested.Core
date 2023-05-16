@@ -1,25 +1,32 @@
-﻿using System.Reflection;
+﻿using System.Linq.Expressions;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace Rested.Core.CQRS.Data
 {
     public class ProjectionRegistration
     {
+        #region Properties
+
+        public static ProjectionRegistration Instance { get; private set; }
+
+        #endregion Properties
+
         #region Ctor
 
-        public ProjectionRegistration()
+        private ProjectionRegistration()
         {
             InvokeStaticConstructorOnProjections(
                 assemblies: AppDomain.CurrentDomain.GetAssemblies());
         }
 
-        public ProjectionRegistration(Assembly assembly)
+        private ProjectionRegistration(Assembly assembly)
         {
             InvokeStaticConstructorOnProjections(
                 assemblies: new Assembly[] { assembly });
         }
 
-        public ProjectionRegistration(Assembly[] assemblies)
+        private ProjectionRegistration(Assembly[] assemblies)
         {
             InvokeStaticConstructorOnProjections(assemblies);
         }
@@ -28,17 +35,38 @@ namespace Rested.Core.CQRS.Data
 
         #region Methods
 
+        public static ProjectionRegistration Initialize()
+        {
+            Instance ??= new ProjectionRegistration();
+
+            return Instance;
+        }
+
+        public static ProjectionRegistration Initialize(Assembly assembly)
+        {
+            Instance ??= new ProjectionRegistration(assembly);
+
+            return Instance;
+        }
+
+        public static ProjectionRegistration Initialize(Assembly[] assemblies)
+        {
+            Instance ??= new ProjectionRegistration(assemblies);
+
+            return Instance;
+        }
+
         private void InvokeStaticConstructorOnProjections(Assembly[] assemblies)
         {
-            var projectionTypes = GetDerivedProjections(assemblies);
+            var projectionTypes = GetDerivedProjectionTypes(assemblies);
 
             projectionTypes.ForEach(t => RuntimeHelpers.RunClassConstructor(t.TypeHandle));
         }
 
-        private List<Type> GetDerivedProjections(Assembly[] assemblies)
+        private List<Type> GetDerivedProjectionTypes(Assembly[] assemblies)
         {
             return assemblies
-                .SelectMany(da => da.GetExportedTypes())
+                .SelectMany(a => a.GetExportedTypes())
                 .Where(t => IsBaseTypeProjection(t) && !t.IsAbstract)
                 .ToList();
         }

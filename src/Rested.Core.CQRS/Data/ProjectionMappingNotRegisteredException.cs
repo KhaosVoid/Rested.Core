@@ -7,7 +7,6 @@
         private const string EXCEPTION_MESSAGE_PROPERTY_PATH = "The projection type '{0}' does not have a mapping registered for the property '{1}'.";
         private const string EXCEPTION_MESSAGE_PROJECTION_TYPE = "There are no mappings registered for the type '{0}'.";
 
-
         #endregion Members
 
         #region Ctor

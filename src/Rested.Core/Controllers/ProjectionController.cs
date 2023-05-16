@@ -7,8 +7,8 @@ using System.Net.Mime;
 
 namespace Rested.Core.Controllers
 {
-    public abstract class ProjectionController<TProjection> :
-        ControllerBase
+    public abstract class ProjectionController<TData, TProjection> : ControllerBase
+        where TData : IData
         where TProjection : Projection
     {
         #region Members

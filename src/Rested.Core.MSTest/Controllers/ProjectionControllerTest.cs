@@ -70,7 +70,7 @@ namespace Rested.Core.MSTest.Controllers
             OnInitializeTestDocuments();
 
             TestContext.WriteLine("Initializing Projection Registration...");
-            ProjectionRegistration.Initialize(Assembly.GetExecutingAssembly());
+            OnInitializeProjectionRegistration();
 
             TestContext.WriteLine("Initializing Test Projections...");
             OnInitializeTestProjections();
@@ -86,6 +86,11 @@ namespace Rested.Core.MSTest.Controllers
         protected virtual void OnInitializeTestDocuments()
         {
             TestDocuments = InitializeTestData().Select(CreateDocument).ToList();
+        }
+
+        protected virtual void OnInitializeProjectionRegistration()
+        {
+            ProjectionRegistration.Initialize(typeof(TProjection).Assembly);
         }
 
         protected virtual void OnInitializeTestProjections()

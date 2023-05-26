@@ -145,7 +145,7 @@ namespace Rested.Core.CQRS.Services
             catch { throw; }
         }
 
-        public virtual async Task<TDocument> DeleteDocument(Guid id, byte[] etag)
+        public virtual async Task DeleteDocument(Guid id, byte[] etag)
         {
             try
             {
@@ -153,20 +153,18 @@ namespace Rested.Core.CQRS.Services
                     name: "If-Match",
                     value: Convert.ToBase64String(etag));
 
-                return await _httpClient.DeleteFromJsonAsync<TDocument>($"{typeof(TData).Name}/{id}");
+                await _httpClient.DeleteAsync($"{typeof(TData).Name}/{id}");
             }
             catch { throw; }
         }
 
-        public virtual async Task<List<TDocument>> DeleteMultipleDocuments(List<BaseDto> baseDtos)
+        public virtual async Task DeleteMultipleDocuments(List<BaseDto> baseDtos)
         {
             try
             {
-                var response = await _httpClient.PostAsJsonAsync(
+                await _httpClient.PostAsJsonAsync(
                     requestUri: $"{typeof(TData).Name}s/delete",
                     value: baseDtos);
-
-                return await response.Content.ReadFromJsonAsync<List<TDocument>>();
             }
             catch { throw; }
         }

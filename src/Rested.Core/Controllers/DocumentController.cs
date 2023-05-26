@@ -8,9 +8,7 @@ using System.Net.Mime;
 
 namespace Rested.Core.Controllers
 {
-    public abstract class DocumentController<TData, TDocument> : ControllerBase
-        where TData : IData
-        where TDocument : IDocument<TData>
+    public abstract class DocumentController<TData> : ControllerBase where TData : IData
     {
         #region Members
 
@@ -48,7 +46,7 @@ namespace Rested.Core.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public abstract Task<ActionResult<TDocument>> GetDocument([FromRoute] Guid id);
+        public abstract Task<ActionResult<IDocument<TData>>> GetDocument([FromRoute] Guid id);
 
         /// <summary>
         /// Gets all Documents.
@@ -62,7 +60,7 @@ namespace Rested.Core.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public abstract Task<ActionResult<List<TDocument>>> GetDocuments();
+        public abstract Task<ActionResult<List<IDocument<TData>>>> GetDocuments();
 
         /// <summary>
         /// Performs a search using the information in the <see cref="SearchRequest"/> and returns the results.
@@ -77,7 +75,7 @@ namespace Rested.Core.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public abstract Task<ActionResult<SearchDocumentsResults<TData, TDocument>>> SearchDocuments([FromBody] SearchRequest searchRequest);
+        public abstract Task<ActionResult<SearchDocumentsResults<TData, IDocument<TData>>>> SearchDocuments([FromBody] SearchRequest searchRequest);
 
         /// <summary>
         /// Inserts a Document.
@@ -91,7 +89,7 @@ namespace Rested.Core.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public abstract Task<ActionResult<TDocument>> InsertDocument([FromBody] TData data);
+        public abstract Task<ActionResult<IDocument<TData>>> InsertDocument([FromBody] TData data);
 
         /// <summary>
         /// Inserts multiple Documents.
@@ -104,7 +102,7 @@ namespace Rested.Core.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public abstract Task<ActionResult<List<TDocument>>> InsertMultipleDocuments([FromBody] List<TData> datas);
+        public abstract Task<ActionResult<List<IDocument<TData>>>> InsertMultipleDocuments([FromBody] List<TData> datas);
 
         /// <summary>
         /// Updates a Document.
@@ -120,7 +118,7 @@ namespace Rested.Core.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public abstract Task<ActionResult<TDocument>> UpdateDocument(
+        public abstract Task<ActionResult<IDocument<TData>>> UpdateDocument(
             [FromRoute] Guid id,
             [FromHeader] IfMatchByteArray etag,
             [FromBody] TData data);
@@ -137,7 +135,7 @@ namespace Rested.Core.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public abstract Task<ActionResult<List<TDocument>>> UpdateMultipleDocuments([FromBody] List<Dto<TData>> dtos);
+        public abstract Task<ActionResult<List<IDocument<TData>>>> UpdateMultipleDocuments([FromBody] List<Dto<TData>> dtos);
 
         /// <summary>
         /// Patches a Document.
@@ -153,7 +151,7 @@ namespace Rested.Core.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public abstract Task<ActionResult<TDocument>> PatchDocument(
+        public abstract Task<ActionResult<IDocument<TData>>> PatchDocument(
             [FromRoute] Guid id,
             [FromHeader] IfMatchByteArray etag,
             [FromBody] TData data);
@@ -170,7 +168,7 @@ namespace Rested.Core.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public abstract Task<ActionResult<List<TDocument>>> PatchMultipleDocuments([FromBody] List<Dto<TData>> dtos);
+        public abstract Task<ActionResult<List<IDocument<TData>>>> PatchMultipleDocuments([FromBody] List<Dto<TData>> dtos);
 
         /// <summary>
         /// Deletes a Document.

@@ -17,7 +17,7 @@ namespace Rested.Core.MSTest.Controllers
     public abstract class DocumentControllerTest<TData, TDocument, TDocumentController>
         where TData : IData
         where TDocument : IDocument<TData>
-        where TDocumentController : DocumentController<TData, TDocument>
+        where TDocumentController : DocumentController<TData>
     {
         #region Constants
 
@@ -176,7 +176,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(GetDocument),
-                controllerMethodName: nameof(DocumentController<TData, TDocument>.GetDocument));
+                controllerMethodName: nameof(DocumentController<TData>.GetDocument));
 
             _mediatorMock
                 .Send(Arg.Any<GetDocumentQuery<TData, TDocument>>())
@@ -198,7 +198,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(GetDocuments),
-                controllerMethodName: nameof(DocumentController<TData, TDocument>.GetDocuments));
+                controllerMethodName: nameof(DocumentController<TData>.GetDocuments));
 
             _mediatorMock
                 .Send(Arg.Any<GetDocumentsQuery<TData, TDocument>>())
@@ -220,7 +220,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(SearchDocuments),
-                controllerMethodName: nameof(DocumentController<TData, TDocument>.SearchDocuments));
+                controllerMethodName: nameof(DocumentController<TData>.SearchDocuments));
 
             var searchRequest = new SearchRequest()
             {
@@ -256,7 +256,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(InsertDocument),
-                controllerMethodName: nameof(DocumentController<TData, TDocument>.InsertDocument));
+                controllerMethodName: nameof(DocumentController<TData>.InsertDocument));
 
             _mediatorMock
                 .Send(Arg.Any<DocumentCommand<TData, TDocument>>())
@@ -279,7 +279,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(InsertMultipleDocuments),
-                controllerMethodName: nameof(DocumentController<TData, TDocument>.InsertMultipleDocuments));
+                controllerMethodName: nameof(DocumentController<TData>.InsertMultipleDocuments));
 
             _mediatorMock
                 .Send(Arg.Any<MultiDocumentCommand<TData, TDocument>>())
@@ -302,7 +302,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(UpdateDocument),
-                controllerMethodName: nameof(DocumentController<TData, TDocument>.UpdateDocument));
+                controllerMethodName: nameof(DocumentController<TData>.UpdateDocument));
 
             _mediatorMock
                 .Send(Arg.Any<DocumentCommand<TData, TDocument>>())
@@ -327,7 +327,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(UpdateMultipleDocuments),
-                controllerMethodName: nameof(DocumentController<TData, TDocument>.UpdateMultipleDocuments));
+                controllerMethodName: nameof(DocumentController<TData>.UpdateMultipleDocuments));
 
             _mediatorMock
                 .Send(Arg.Any<MultiDocumentCommand<TData, TDocument>>())
@@ -349,7 +349,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(PatchDocument),
-                controllerMethodName: nameof(DocumentController<TData, TDocument>.PatchDocument));
+                controllerMethodName: nameof(DocumentController<TData>.PatchDocument));
 
             _mediatorMock
                 .Send(Arg.Any<DocumentCommand<TData, TDocument>>())
@@ -374,7 +374,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(PatchMultipleDocuments),
-                controllerMethodName: nameof(DocumentController<TData, TDocument>.PatchMultipleDocuments));
+                controllerMethodName: nameof(DocumentController<TData>.PatchMultipleDocuments));
 
             _mediatorMock
                 .Send(Arg.Any<MultiDocumentCommand<TData, TDocument>>())
@@ -396,7 +396,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(DeleteDocument),
-                controllerMethodName: nameof(DocumentController<TData, TDocument>.DeleteDocument));
+                controllerMethodName: nameof(DocumentController<TData>.DeleteDocument));
 
             _mediatorMock
                 .Send(Arg.Any<DocumentCommand<TData, TDocument>>())
@@ -418,7 +418,7 @@ namespace Rested.Core.MSTest.Controllers
         {
             ShouldControllerTestBeSkipped(
                 testMethodName: nameof(DeleteMultipleDocuments),
-                controllerMethodName: nameof(DocumentController<TData, TDocument>.DeleteMultipleDocuments));
+                controllerMethodName: nameof(DocumentController<TData>.DeleteMultipleDocuments));
 
             _mediatorMock
                 .Send(Arg.Any<MultiDocumentCommand<TData, TDocument>>())

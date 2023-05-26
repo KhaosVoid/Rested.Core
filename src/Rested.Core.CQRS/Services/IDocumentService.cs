@@ -15,7 +15,7 @@ namespace Rested.Core.CQRS.Services
         Task<List<TDocument>> UpdateMultipleDocuments(List<Dto<TData>> dtos);
         Task<TDocument> PatchDocument(Guid id, byte[] etag, TData data);
         Task<List<TDocument>> PatchMultipleDocuments(List<Dto<TData>> dtos);
-        Task<TDocument> DeleteDocument(Guid id, byte[] etag);
-        Task<List<TDocument>> DeleteMultipleDocuments(List<BaseDto> baseDtos);
+        Task DeleteDocument(Guid id, byte[] etag);
+        Task DeleteMultipleDocuments(List<BaseDto> baseDtos);
     }
 }

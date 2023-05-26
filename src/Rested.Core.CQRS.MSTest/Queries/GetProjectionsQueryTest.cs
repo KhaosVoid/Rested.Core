@@ -7,7 +7,6 @@ using Rested.Core.CQRS.Data;
 using Rested.Core.CQRS.MSTest;
 using Rested.Core.CQRS.Queries;
 using Rested.Core.CQRS.Validation;
-using System.Reflection;
 
 namespace Rested.Core.MSTest.Queries
 {

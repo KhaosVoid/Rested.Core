@@ -12,13 +12,10 @@ namespace Rested.Core.CQRS.Queries.Validators
             var filterOperationNotSupportedErrorCode = serviceErrorCodes.CommonErrorCodes.FieldFilterOperationNotSupported;
 
             When(
-                predicate: m =>
-                {
-                    return
-                        (TextFieldFilterOperations)m.FilterOperation is not TextFieldFilterOperations.Blank &&
-                        (TextFieldFilterOperations)m.FilterOperation is not TextFieldFilterOperations.NotBlank &&
-                        (TextFieldFilterOperations)m.FilterOperation is not TextFieldFilterOperations.Empty;
-                },
+                predicate: m => (TextFieldFilterOperations)m.FilterOperation
+                    is not TextFieldFilterOperations.Blank
+                    and not TextFieldFilterOperations.NotBlank
+                    and not TextFieldFilterOperations.Empty,
                 action: () =>
                 {
                     RuleFor(m => m.FilterValue)

@@ -9,6 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.MSTest", "Reste
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{555DCE30-ECE3-4516-BA6C-AC3458158A61}"
 	ProjectSection(SolutionItems) = preProject
+		..\GitVersion.yml = ..\GitVersion.yml
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
@@ -22,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Workflows", "GitHub 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.CQRS.MSTest", "Rested.Core.CQRS.MSTest\Rested.Core.CQRS.MSTest.csproj", "{982AD58A-D6BE-43D6-84A5-923AF2BF872A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rested.Core.UnitTest", "Rested.Core.UnitTest\Rested.Core.UnitTest.csproj", "{29916E94-4809-4628-A394-378602786CDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.UnitTest", "Rested.Core.UnitTest\Rested.Core.UnitTest.csproj", "{29916E94-4809-4628-A394-378602786CDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

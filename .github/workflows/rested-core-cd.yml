@@ -49,49 +49,65 @@ jobs:
         echo "version=${{steps.gitversion.outputs.major}}.${{steps.gitversion.outputs.minor}}.${{steps.gitversion.outputs.commitsSinceVersionSource}}" >> $GITHUB_OUTPUT
 
     # Restore
-    - name: Restore (Rested.Core)
-      run: dotnet restore Rested.Core
-    - name: Restore (Rested.Core.CQRS)
-      run: dotnet restore Rested.Core.CQRS
-    - name: Restore (Rested.Core.MSTest)
-      run: dotnet restore Rested.Core.MSTest
-    - name: Restore (Rested.Core.CQRS.MSTest)
-      run: dotnet restore Rested.Core.CQRS.MSTest
-    - name: Restore (Rested.Core.UnitTest)
-      run: dotnet restore Rested.Core.UnitTest
+    - name: Restore (Rested.Core.Data)
+      run: dotnet restore Rested.Core.Data
+    - name: Restore (Rested.Core.Client)
+      run: dotnet restore Rested.Core.Client
+    - name: Restore (Rested.Core.MediatR)
+      run: dotnet restore Rested.Core.MediatR
+    - name: Restore (Rested.Core.Server)
+      run: dotnet restore Rested.Core.Server
+    - name: Restore (Rested.Core.MediatR.MSTest)
+      run: dotnet restore Rested.Core.MediatR.MSTest
+    - name: Restore (Rested.Core.Server.MSTest)
+      run: dotnet restore Rested.Core.Server.MSTest
+    - name: Restore (Rested.Core.Data.UnitTest)
+      run: dotnet restore Rested.Core.Data.UnitTest
 
     # Build
-    - name: Build (Rested.Core)
-      run: dotnet build Rested.Core --configuration Release --no-restore
-    - name: Build (Rested.Core.CQRS)
-      run: dotnet build Rested.Core.CQRS --configuration Release --no-restore
-    - name: Build (Rested.Core.MSTest)
-      run: dotnet build Rested.Core.MSTest --configuration Release --no-restore
-    - name: Build (Rested.Core.CQRS.MSTest)
-      run: dotnet build Rested.Core.CQRS.MSTest --configuration Release --no-restore
-    - name: Build (Rested.Core.UnitTest)
-      run: dotnet build Rested.Core.UnitTest --configuration Release --no-restore
+    - name: Build (Rested.Core.Data)
+      run: dotnet build Rested.Core.Data --configuration Release --no-restore
+    - name: Build (Rested.Core.Client)
+      run: dotnet build Rested.Core.Client --configuration Release --no-restore
+    - name: Build (Rested.Core.MediatR)
+      run: dotnet build Rested.Core.MediatR --configuration Release --no-restore
+    - name: Build (Rested.Core.Server)
+      run: dotnet build Rested.Core.Server --configuration Release --no-restore
+    - name: Build (Rested.Core.MediatR.MSTest)
+      run: dotnet build Rested.Core.MediatR.MSTest --configuration Release --no-restore
+    - name: Build (Rested.Core.Server.MSTest)
+      run: dotnet build Rested.Core.Server.MSTest --configuration Release --no-restore
+    - name: Build (Rested.Core.Data.UnitTest)
+      run: dotnet build Rested.Core.Data.UnitTest --configuration Release --no-restore
 
     # Test
-    - name: Test (Rested.Core.UnitTest)
-      run: dotnet test Rested.Core.UnitTest --no-restore --verbosity normal
+    - name: Test (Rested.Core.Data.UnitTest)
+      run: dotnet test Rested.Core.Data.UnitTest --no-restore --verbosity normal
 
     # Create NuGet Packages
-    - name: Create NuGet Package (Rested.Core)
-      run: dotnet pack Rested.Core --configuration Release --no-restore -p:Version=${{steps.nugetPackageVersion.outputs.version}}
-    - name: Create NuGet Package (Rested.Core.CQRS)
-      run: dotnet pack Rested.Core.CQRS --configuration Release --no-restore -p:Version=${{steps.nugetPackageVersion.outputs.version}}
-    - name: Create NuGet Package (Rested.Core.MSTest)
-      run: dotnet pack Rested.Core.MSTest --configuration Release --no-restore -p:Version=${{steps.nugetPackageVersion.outputs.version}}
-    - name: Create NuGet Package (Rested.Core.CQRS.MSTest)
-      run: dotnet pack Rested.Core.CQRS.MSTest --configuration Release --no-restore -p:Version=${{steps.nugetPackageVersion.outputs.version}}
+    - name: Create NuGet Package (Rested.Core.Data)
+      run: dotnet pack Rested.Core.Data --configuration Release --no-restore -p:Version${{steps.nugetPackageVersion.outputs.version}}
+    - name: Create NuGet Package (Rested.Core.Client)
+      run: dotnet pack Rested.Core.Client --configuration Release --no-restore -p:Version${{steps.nugetPackageVersion.outputs.version}}
+    - name: Create NuGet Package (Rested.Core.MediatR)
+      run: dotnet pack Rested.Core.MediatR --configuration Release --no-restore -p:Version${{steps.nugetPackageVersion.outputs.version}}
+    - name: Create NuGet Package (Rested.Core.Server)
+      run: dotnet pack Rested.Core.Server --configuration Release --no-restore -p:Version${{steps.nugetPackageVersion.outputs.version}}
+    - name: Create NuGet Package (Rested.Core.MediatR.MSTest)
+      run: dotnet pack Rested.Core.MediatR.MSTest --configuration Release --no-restore -p:Version${{steps.nugetPackageVersion.outputs.version}}
+    - name: Create NuGet Package (Rested.Core.Server.MSTest)
+      run: dotnet pack Rested.Core.Server.MSTest --configuration Release --no-restore -p:Version${{steps.nugetPackageVersion.outputs.version}}
 
     # Publish NuGet Packages
-    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core)
-      run: dotnet nuget push ./Rested.Core/bin/Release/*.nupkg
-    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.CQRS)
-      run: dotnet nuget push ./Rested.Core.CQRS/bin/Release/*.nupkg
-    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.MSTest)
-      run: dotnet nuget push ./Rested.Core.MSTest/bin/Release/*.nupkg
-    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.CQRS.MSTest)
-      run: dotnet nuget push ./Rested.Core.CQRS.MSTest/bin/Release/*.nupkg
+    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.Data)
+      run: dotnet nuget push ./Rested.Core.Data/bin/Release/*.nupkg
+    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.Client)
+      run: dotnet nuget push ./Rested.Core.Client/bin/Release/*.nupkg
+    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.MediatR)
+      run: dotnet nuget push ./Rested.Core.MediatR/bin/Release/*.nupkg
+    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.Server)
+      run: dotnet nuget push ./Rested.Core.Server/bin/Release/*.nupkg
+    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.MediatR.MSTest)
+      run: dotnet nuget push ./Rested.Core.MediatR.MSTest/bin/Release/*.nupkg
+    - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.Server.MSTest)
+      run: dotnet nuget push ./Rested.Core.Server.MSTest/bin/Release/*.nupkg

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+      <Title>Rested.Core.MediatR</Title>
+      <Description>Rested core MediatR library.</Description>
+      <Copyright>Zach "KhaosVoid" Tommey © 2023</Copyright>
+      <PackageProjectUrl>https://github.com/KhaosVoid/Rested.Core</PackageProjectUrl>
+      <RepositoryUrl>https://github.com/KhaosVoid/Rested.Core</RepositoryUrl>
+      <Authors>Zach "KhaosVoid" Tommey</Authors>
+      <Company>Liminality</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.5.1" />
+    <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rested.Core.Data\Rested.Core.Data.csproj" />
+  </ItemGroup>
+
+</Project>

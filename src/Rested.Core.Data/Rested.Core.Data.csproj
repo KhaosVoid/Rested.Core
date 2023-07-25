@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Title>Rested.Core.Data</Title>
+    <Description>Rested core data library.</Description>
+    <Copyright>Zach "KhaosVoid" Tommey © 2023</Copyright>
+    <PackageProjectUrl>https://github.com/KhaosVoid/Rested.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KhaosVoid/Rested.Core</RepositoryUrl>
+    <Authors>Zach "KhaosVoid" Tommey</Authors>
+    <Company>Liminality</Company>
+  </PropertyGroup>
+
+</Project>

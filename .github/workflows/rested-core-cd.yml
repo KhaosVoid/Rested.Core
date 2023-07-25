@@ -86,17 +86,17 @@ jobs:
 
     # Create NuGet Packages
     - name: Create NuGet Package (Rested.Core.Data)
-      run: dotnet pack Rested.Core.Data --configuration Release --no-restore -p:Version${{steps.nugetPackageVersion.outputs.version}}
+      run: dotnet pack Rested.Core.Data --configuration Release --no-restore -p:Version=${{steps.nugetPackageVersion.outputs.version}}
     - name: Create NuGet Package (Rested.Core.Client)
-      run: dotnet pack Rested.Core.Client --configuration Release --no-restore -p:Version${{steps.nugetPackageVersion.outputs.version}}
+      run: dotnet pack Rested.Core.Client --configuration Release --no-restore -p:Version=${{steps.nugetPackageVersion.outputs.version}}
     - name: Create NuGet Package (Rested.Core.MediatR)
-      run: dotnet pack Rested.Core.MediatR --configuration Release --no-restore -p:Version${{steps.nugetPackageVersion.outputs.version}}
+      run: dotnet pack Rested.Core.MediatR --configuration Release --no-restore -p:Version=${{steps.nugetPackageVersion.outputs.version}}
     - name: Create NuGet Package (Rested.Core.Server)
-      run: dotnet pack Rested.Core.Server --configuration Release --no-restore -p:Version${{steps.nugetPackageVersion.outputs.version}}
+      run: dotnet pack Rested.Core.Server --configuration Release --no-restore -p:Version=${{steps.nugetPackageVersion.outputs.version}}
     - name: Create NuGet Package (Rested.Core.MediatR.MSTest)
-      run: dotnet pack Rested.Core.MediatR.MSTest --configuration Release --no-restore -p:Version${{steps.nugetPackageVersion.outputs.version}}
+      run: dotnet pack Rested.Core.MediatR.MSTest --configuration Release --no-restore -p:Version=${{steps.nugetPackageVersion.outputs.version}}
     - name: Create NuGet Package (Rested.Core.Server.MSTest)
-      run: dotnet pack Rested.Core.Server.MSTest --configuration Release --no-restore -p:Version${{steps.nugetPackageVersion.outputs.version}}
+      run: dotnet pack Rested.Core.Server.MSTest --configuration Release --no-restore -p:Version=${{steps.nugetPackageVersion.outputs.version}}
 
     # Publish NuGet Packages
     - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.Data)

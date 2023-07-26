@@ -1,6 +1,6 @@
 ﻿namespace Rested.Core.Data
 {
-    public abstract class SearchResults<TResultType> : SearchRequest, ISearchResults<TResultType>
+    public abstract record SearchResults<TResultType> : SearchRequest, ISearchResults<TResultType>
     {
         #region Properties
 

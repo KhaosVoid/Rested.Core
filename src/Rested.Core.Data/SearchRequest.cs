@@ -1,6 +1,6 @@
 ﻿namespace Rested.Core.Data
 {
-    public class SearchRequest
+    public record SearchRequest
     {
         #region Properties
 

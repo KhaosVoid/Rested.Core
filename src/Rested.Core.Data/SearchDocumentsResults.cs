@@ -1,6 +1,6 @@
 ﻿namespace Rested.Core.Data
 {
-    public class SearchDocumentsResults<TData, TDocument> : SearchResults<TDocument>
+    public record SearchDocumentsResults<TData, TDocument> : SearchResults<TDocument>
         where TData : IData
         where TDocument : IDocument<TData>
     {

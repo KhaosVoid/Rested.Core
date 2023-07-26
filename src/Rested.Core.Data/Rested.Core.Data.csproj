@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <Title>Rested.Core.Data</Title>
     <Description>Rested core data library.</Description>
     <Copyright>Zach "KhaosVoid" Tommey © 2023</Copyright>

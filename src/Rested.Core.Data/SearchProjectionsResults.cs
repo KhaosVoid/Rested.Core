@@ -1,6 +1,6 @@
 ﻿namespace Rested.Core.Data
 {
-    public class SearchProjectionsResults<TProjection> :
+    public record SearchProjectionsResults<TProjection> :
         SearchResults<TProjection>
         where TProjection : Projection
     {

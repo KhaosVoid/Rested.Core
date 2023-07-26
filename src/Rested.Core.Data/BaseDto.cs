@@ -1,6 +1,6 @@
 ﻿namespace Rested.Core.Data
 {
-    public class BaseDto : IBaseDto
+    public record BaseDto : IBaseDto
     {
         #region Properties
 

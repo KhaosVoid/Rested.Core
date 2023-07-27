@@ -114,14 +114,14 @@ jobs:
 
     # Publish NuGet Packages to nuget.org
     - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.Data)
-      run: dotnet nuget push ./Rested.Core.Data/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --spi-key ${{secrets.RESTED_NUGET_API_KEY}}
+      run: dotnet nuget push ./Rested.Core.Data/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.RESTED_NUGET_API_KEY}}
     - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.Client)
-      run: dotnet nuget push ./Rested.Core.Client/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --spi-key ${{secrets.RESTED_NUGET_API_KEY}}
+      run: dotnet nuget push ./Rested.Core.Client/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.RESTED_NUGET_API_KEY}}
     - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.MediatR)
-      run: dotnet nuget push ./Rested.Core.MediatR/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --spi-key ${{secrets.RESTED_NUGET_API_KEY}}
+      run: dotnet nuget push ./Rested.Core.MediatR/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.RESTED_NUGET_API_KEY}}
     - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.Server)
-      run: dotnet nuget push ./Rested.Core.Server/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --spi-key ${{secrets.RESTED_NUGET_API_KEY}}
+      run: dotnet nuget push ./Rested.Core.Server/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.RESTED_NUGET_API_KEY}}
     - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.MediatR.MSTest)
-      run: dotnet nuget push ./Rested.Core.MediatR.MSTest/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --spi-key ${{secrets.RESTED_NUGET_API_KEY}}
+      run: dotnet nuget push ./Rested.Core.MediatR.MSTest/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.RESTED_NUGET_API_KEY}}
     - name: Publish NuGet Package to GitHub Package Repository (Rested.Core.Server.MSTest)
-      run: dotnet nuget push ./Rested.Core.Server.MSTest/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --spi-key ${{secrets.RESTED_NUGET_API_KEY}}
+      run: dotnet nuget push ./Rested.Core.Server.MSTest/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.RESTED_NUGET_API_KEY}}

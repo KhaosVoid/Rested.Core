@@ -4,7 +4,7 @@
     {
         #region Properties
 
-        public virtual CommonServiceErrorCodes? CommonErrorCodes { get; protected set; }
+        public virtual CommonServiceErrorCodes CommonErrorCodes { get; protected set; }
 
         #endregion Properties
 

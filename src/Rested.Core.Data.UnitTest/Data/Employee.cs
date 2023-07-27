@@ -1,6 +1,4 @@
-﻿using Rested.Core.Data;
-
-namespace Rested.Core.Data.UnitTest.Data
+﻿namespace Rested.Core.Data.UnitTest.Data
 {
     public class Employee : IData
     {

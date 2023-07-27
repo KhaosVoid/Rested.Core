@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>annotations</Nullable>
       <Title>Rested.Core.MediatR</Title>
       <Description>Rested core MediatR library.</Description>
       <Copyright>Zach "KhaosVoid" Tommey © 2023</Copyright>

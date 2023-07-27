@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>disable</Nullable>
+    <Nullable>annotations</Nullable>
     <Title>Rested.Core.Server.MSTest</Title>
     <Description>Rested core server unit testing library.</Description>
     <Copyright>Zach "KhaosVoid" Tommey © 2023</Copyright>

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>annotations</Nullable>
     <Title>Rested.Core.Client</Title>
     <Description>Rested core client library.</Description>
     <Copyright>Zach "KhaosVoid" Tommey © 2023</Copyright>

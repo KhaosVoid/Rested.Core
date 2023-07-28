@@ -2,19 +2,17 @@
 
 namespace Rested.Core.Client
 {
-    public interface IDocumentService<TData, TDocument>
-        where TData : IData
-        where TDocument : IDocument<TData>
+    public interface IDocumentService<TData> where TData : IData
     {
-        Task<TDocument> GetDocument(Guid id);
-        Task<List<TDocument>> GetDocuments();
-        Task<SearchDocumentsResults<TData, TDocument>> SearchDocuments(SearchRequest searchRequest);
-        Task<TDocument> InsertDocument(TData data);
-        Task<List<TDocument>> InsertMultipleDocuments(List<TData> data);
-        Task<TDocument> UpdateDocument(Guid id, byte[] etag, TData data);
-        Task<List<TDocument>> UpdateMultipleDocuments(List<Dto<TData>> dtos);
-        Task<TDocument> PatchDocument(Guid id, byte[] etag, TData data);
-        Task<List<TDocument>> PatchMultipleDocuments(List<Dto<TData>> dtos);
+        Task<IDocument<TData>> GetDocument(Guid id);
+        Task<List<IDocument<TData>>> GetDocuments();
+        Task<SearchDocumentsResults<TData, IDocument<TData>>> SearchDocuments(SearchRequest searchRequest);
+        Task<IDocument<TData>> InsertDocument(TData data);
+        Task<List<IDocument<TData>>> InsertMultipleDocuments(List<TData> data);
+        Task<IDocument<TData>> UpdateDocument(Guid id, byte[] etag, TData data);
+        Task<List<IDocument<TData>>> UpdateMultipleDocuments(List<Dto<TData>> dtos);
+        Task<IDocument<TData>> PatchDocument(Guid id, byte[] etag, TData data);
+        Task<List<IDocument<TData>>> PatchMultipleDocuments(List<Dto<TData>> dtos);
         Task DeleteDocument(Guid id, byte[] etag);
         Task DeleteMultipleDocuments(List<BaseDto> baseDtos);
     }

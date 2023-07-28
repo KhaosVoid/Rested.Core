@@ -3,9 +3,7 @@ using System.Net.Http.Json;
 
 namespace Rested.Core.Client
 {
-    public abstract class DocumentService<TData, TDocument> : IDocumentService<TData, TDocument>
-        where TData : IData
-        where TDocument : IDocument<TData>
+    public abstract class DocumentService<TData> : IDocumentService<TData> where TData : IData
     {
         #region Members
 
@@ -28,25 +26,25 @@ namespace Rested.Core.Client
 
         protected abstract string GetBaseApiRoute();
 
-        public virtual async Task<TDocument> GetDocument(Guid id)
+        public virtual async Task<IDocument<TData>> GetDocument(Guid id)
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<TDocument>($"{typeof(TData).Name}/{id}");
+                return await _httpClient.GetFromJsonAsync<IDocument<TData>>($"{typeof(TData).Name}/{id}");
             }
             catch { throw; }
         }
 
-        public virtual async Task<List<TDocument>> GetDocuments()
+        public virtual async Task<List<IDocument<TData>>> GetDocuments()
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<List<TDocument>>($"{typeof(TData).Name}s");
+                return await _httpClient.GetFromJsonAsync<List<IDocument<TData>>>($"{typeof(TData).Name}s");
             }
             catch { throw; }
         }
 
-        public virtual async Task<SearchDocumentsResults<TData, TDocument>> SearchDocuments(SearchRequest searchRequest)
+        public virtual async Task<SearchDocumentsResults<TData, IDocument<TData>>> SearchDocuments(SearchRequest searchRequest)
         {
             try
             {
@@ -54,12 +52,12 @@ namespace Rested.Core.Client
                     requestUri: $"{typeof(TData).Name}s/search",
                     value: searchRequest);
 
-                return await response.Content.ReadFromJsonAsync<SearchDocumentsResults<TData, TDocument>>();
+                return await response.Content.ReadFromJsonAsync<SearchDocumentsResults<TData, IDocument<TData>>>();
             }
             catch { throw; }
         }
 
-        public virtual async Task<TDocument> InsertDocument(TData data)
+        public virtual async Task<IDocument<TData>> InsertDocument(TData data)
         {
             try
             {
@@ -67,12 +65,12 @@ namespace Rested.Core.Client
                     requestUri: $"{typeof(TData).Name}",
                     value: data);
 
-                return await response.Content.ReadFromJsonAsync<TDocument>();
+                return await response.Content.ReadFromJsonAsync<IDocument<TData>>();
             }
             catch { throw; }
         }
 
-        public virtual async Task<List<TDocument>> InsertMultipleDocuments(List<TData> datas)
+        public virtual async Task<List<IDocument<TData>>> InsertMultipleDocuments(List<TData> datas)
         {
             try
             {
@@ -80,12 +78,12 @@ namespace Rested.Core.Client
                     requestUri: $"{typeof(TData).Name}s",
                     value: datas);
 
-                return await response.Content.ReadFromJsonAsync<List<TDocument>>();
+                return await response.Content.ReadFromJsonAsync<List<IDocument<TData>>>();
             }
             catch { throw; }
         }
 
-        public virtual async Task<TDocument> UpdateDocument(Guid id, byte[] etag, TData data)
+        public virtual async Task<IDocument<TData>> UpdateDocument(Guid id, byte[] etag, TData data)
         {
             try
             {
@@ -97,12 +95,12 @@ namespace Rested.Core.Client
                     requestUri: $"{typeof(TData).Name}/{id}",
                     value: data);
 
-                return await response.Content.ReadFromJsonAsync<TDocument>();
+                return await response.Content.ReadFromJsonAsync<IDocument<TData>>();
             }
             catch { throw; }
         }
 
-        public virtual async Task<List<TDocument>> UpdateMultipleDocuments(List<Dto<TData>> dtos)
+        public virtual async Task<List<IDocument<TData>>> UpdateMultipleDocuments(List<Dto<TData>> dtos)
         {
             try
             {
@@ -110,12 +108,12 @@ namespace Rested.Core.Client
                     requestUri: $"{typeof(TData).Name}s",
                     value: dtos);
 
-                return await response.Content.ReadFromJsonAsync<List<TDocument>>();
+                return await response.Content.ReadFromJsonAsync<List<IDocument<TData>>>();
             }
             catch { throw; }
         }
 
-        public virtual async Task<TDocument> PatchDocument(Guid id, byte[] etag, TData data)
+        public virtual async Task<IDocument<TData>> PatchDocument(Guid id, byte[] etag, TData data)
         {
             try
             {
@@ -127,12 +125,12 @@ namespace Rested.Core.Client
                     requestUri: $"{typeof(TData).Name}/{id}",
                     value: data);
 
-                return await response.Content.ReadFromJsonAsync<TDocument>();
+                return await response.Content.ReadFromJsonAsync<IDocument<TData>>();
             }
             catch { throw; }
         }
 
-        public virtual async Task<List<TDocument>> PatchMultipleDocuments(List<Dto<TData>> dtos)
+        public virtual async Task<List<IDocument<TData>>> PatchMultipleDocuments(List<Dto<TData>> dtos)
         {
             try
             {
@@ -140,7 +138,7 @@ namespace Rested.Core.Client
                     requestUri: $"{typeof(TData).Name}s",
                     value: dtos);
 
-                return await response.Content.ReadFromJsonAsync<List<TDocument>>();
+                return await response.Content.ReadFromJsonAsync<List<IDocument<TData>>>();
             }
             catch { throw; }
         }

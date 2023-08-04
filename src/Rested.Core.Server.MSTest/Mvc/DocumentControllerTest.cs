@@ -8,12 +8,11 @@ using NSubstitute;
 using Rested.Core.Data;
 using Rested.Core.MediatR.Commands;
 using Rested.Core.MediatR.Queries;
-using Rested.Core.Server.Controllers;
 using Rested.Core.Server.Http;
-using Rested.Core.Server.MSTest;
+using Rested.Core.Server.Mvc;
 using System.Reflection;
 
-namespace Rested.Core.Server.MSTest.Controllers
+namespace Rested.Core.Server.MSTest.Mvc
 {
     public abstract class DocumentControllerTest<TData, TDocument, TDocumentController>
         where TData : IData
@@ -383,6 +382,53 @@ namespace Rested.Core.Server.MSTest.Controllers
 
             var response = CreateController()
                 .PatchMultipleDocuments(TestDtos)
+                .Result
+                .Result as OkObjectResult;
+
+            response.Should().NotBeNull(because: ASSERTMSG_RESPONSE_SHOULD_NOT_BE_NULL);
+            response.StatusCode.Should().Be(StatusCodes.Status200OK);
+            response.Value.As<List<TDocument>>().Should().BeEquivalentTo(TestDocuments);
+        }
+
+        [TestMethod]
+        [TestCategory(TESTCATEGORY_CONTROLLER_TESTS)]
+        public void PruneDocument()
+        {
+            ShouldControllerTestBeSkipped(
+                testMethodName: nameof(PruneDocument),
+                controllerMethodName: nameof(DocumentController<TData>.PruneDocument));
+
+            _mediatorMock
+                .Send(Arg.Any<DocumentCommand<TData, TDocument>>())
+                .ReturnsForAnyArgs(TestDocuments.First());
+
+            var response = CreateController()
+                .PruneDocument(
+                    id: TestDocuments.First().Id,
+                    etag: new IfMatchByteArray(TestDocuments.First().ETag),
+                    data: TestDocuments.First().Data)
+                .Result
+                .Result as OkObjectResult;
+
+            response.Should().NotBeNull(because: ASSERTMSG_RESPONSE_SHOULD_NOT_BE_NULL);
+            response.StatusCode.Should().Be(StatusCodes.Status200OK);
+            response.Value.As<TDocument>().Should().BeEquivalentTo(TestDocuments.First());
+        }
+
+        [TestMethod]
+        [TestCategory(TESTCATEGORY_CONTROLLER_TESTS)]
+        public void PruneMultipleDocuments()
+        {
+            ShouldControllerTestBeSkipped(
+                testMethodName: nameof(PruneMultipleDocuments),
+                controllerMethodName: nameof(DocumentController<TData>.PruneMultipleDocuments));
+
+            _mediatorMock
+                .Send(Arg.Any<MultiDocumentCommand<TData, TDocument>>())
+                .ReturnsForAnyArgs(TestDocuments);
+
+            var response = CreateController()
+                .PruneMultipleDocuments(TestDtos)
                 .Result
                 .Result as OkObjectResult;
 

@@ -15,11 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Workflows", "GitHub 
 		..\.github\workflows\rested-core-ci.yml = ..\.github\workflows\rested-core-ci.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rested.Core.Data", "Rested.Core.Data\Rested.Core.Data.csproj", "{024E15CA-23D1-4B04-86E0-A6ABCBDE26F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.Data", "Rested.Core.Data\Rested.Core.Data.csproj", "{024E15CA-23D1-4B04-86E0-A6ABCBDE26F6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.MediatR", "Rested.Core.MediatR\Rested.Core.MediatR.csproj", "{C48A66AB-04C0-437F-97B1-17FA35248659}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rested.Core.Client", "Rested.Core.Client\Rested.Core.Client.csproj", "{448E3FCE-F09A-404A-B44C-4DF56DE7EF90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.Client", "Rested.Core.Client\Rested.Core.Client.csproj", "{448E3FCE-F09A-404A-B44C-4DF56DE7EF90}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.Server", "Rested.Core.Server\Rested.Core.Server.csproj", "{2EDAF9A1-9698-4E89-989C-2B8BE1598B4B}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.Server.MSTest", "Rested.Core.Server.MSTest\Rested.Core.Server.MSTest.csproj", "{616096EA-28F8-4FE5-84C5-31D0A890E1BB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rested.Core.MediatR.MSTest", "Rested.Core.MediatR.MSTest\Rested.Core.MediatR.MSTest.csproj", "{9B4F8513-BB46-445B-BB0D-0250F320903A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rested.Core.Server.UnitTest", "Rested.Core.Server.UnitTest\Rested.Core.Server.UnitTest.csproj", "{6311ED7C-39AE-4E61-BBCE-89015F30FB88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{9B4F8513-BB46-445B-BB0D-0250F320903A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B4F8513-BB46-445B-BB0D-0250F320903A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B4F8513-BB46-445B-BB0D-0250F320903A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6311ED7C-39AE-4E61-BBCE-89015F30FB88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6311ED7C-39AE-4E61-BBCE-89015F30FB88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6311ED7C-39AE-4E61-BBCE-89015F30FB88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6311ED7C-39AE-4E61-BBCE-89015F30FB88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

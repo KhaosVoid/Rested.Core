@@ -7,10 +7,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Rested.Core.Data;
 using Rested.Core.MediatR.Queries;
-using Rested.Core.Server.Controllers;
+using Rested.Core.Server.Mvc;
 using System.Reflection;
 
-namespace Rested.Core.Server.MSTest.Controllers
+namespace Rested.Core.Server.MSTest.Mvc
 {
     public abstract class ProjectionControllerTest<TData, TDocument, TProjection, TProjectionController>
         where TData : IData

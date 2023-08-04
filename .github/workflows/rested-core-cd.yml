@@ -63,6 +63,8 @@ jobs:
       run: dotnet restore Rested.Core.Server.MSTest
     - name: Restore (Rested.Core.Data.UnitTest)
       run: dotnet restore Rested.Core.Data.UnitTest
+    - name: Restore (Rested.Core.Server.UnitTest)
+      run: dotnet restore Rested.Core.Server.UnitTest
 
     # Build
     - name: Build (Rested.Core.Data)
@@ -79,10 +81,14 @@ jobs:
       run: dotnet build Rested.Core.Server.MSTest --configuration Release --no-restore
     - name: Build (Rested.Core.Data.UnitTest)
       run: dotnet build Rested.Core.Data.UnitTest --configuration Release --no-restore
+    - name: Build (Rested.Core.Server.UnitTest)
+      run: dotnet build Rested.Core.Server.UnitTest --configuration Release --no-restore
 
     # Test
     - name: Test (Rested.Core.Data.UnitTest)
       run: dotnet test Rested.Core.Data.UnitTest --no-restore --verbosity normal
+    - name: Test (Rested.Core.Server.UnitTest)
+      run: dotnet test Rested.Core.Server.UnitTest --no-restore --verbosity normal
 
     # Create NuGet Packages
     - name: Create NuGet Package (Rested.Core.Data)

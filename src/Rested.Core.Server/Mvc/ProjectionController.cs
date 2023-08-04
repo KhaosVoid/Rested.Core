@@ -5,8 +5,10 @@ using Microsoft.Extensions.Logging;
 using Rested.Core.Data;
 using System.Net.Mime;
 
-namespace Rested.Core.Server.Controllers
+namespace Rested.Core.Server.Mvc
 {
+    [ApiController]
+    [RestedApiControllerRoute]
     public abstract class ProjectionController<TData, TProjection> : ControllerBase
         where TData : IData
         where TProjection : Projection
@@ -40,7 +42,7 @@ namespace Rested.Core.Server.Controllers
         /// </summary>
         /// <param name="id">The Id of the projection to retrieve.</param>
         /// <returns></returns>
-        [HttpGet("[controller]/{id}")]
+        [HttpGet, RestedGetProjectionRoute]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -50,7 +52,7 @@ namespace Rested.Core.Server.Controllers
         /// Gets all projections.
         /// </summary>
         /// <returns></returns>
-        [HttpGet("[controller]s")]
+        [HttpGet, RestedGetProjectionsRoute]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -61,7 +63,7 @@ namespace Rested.Core.Server.Controllers
         /// Performs a search using the information in the <see cref="SearchRequest"/> and returns the results.
         /// </summary>
         /// <param name="searchRequest">The <see cref="SearchRequest"/>.</param>
-        [HttpPost("[controller]s/search")]
+        [HttpPost, RestedSearchProjectionsRoute]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]

@@ -1,55 +1,35 @@
 name: Rested.Core CI
 
 on:
-  push:
-    branches-ignore:
+  pull_request:
+    branches:
       - main
     paths-ignore:
       - '**/*.md'
       - '.github/**'
+  workflow_dispatch:
 
 jobs:
-  build:
-    name: Rested.Core CI
+  rested-core-ci:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dotnet-version: [ '8.0.x' ]
-    defaults:
-      run:
-        working-directory: ./src
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET SDK ${{ matrix.dotnet-version }}
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: ${{ matrix.dotnet-version }}
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: 'Install GitVersion'
+        uses: gittools/actions/gitversion/setup@v3.0.0
+        with:
+          versionSpec: '5.x'
 
-    # Restore
-    - name: Restore (Rested.Core)
-      run: dotnet restore Rested.Core
-    - name: Restore (Rested.Core.CQRS)
-      run: dotnet restore Rested.Core.CQRS
-    - name: Restore (Rested.Core.MSTest)
-      run: dotnet restore Rested.Core.MSTest
-    - name: Restore (Rested.Core.CQRS.MSTest)
-      run: dotnet restore Rested.Core.CQRS.MSTest
-    - name: Restore (Rested.Core.UnitTest)
-      run: dotnet restore Rested.Core.UnitTest
-
-    # Build
-    - name: Build (Rested.Core)
-      run: dotnet build Rested.Core --configuration Debug --no-restore
-    - name: Build (Rested.Core.CQRS)
-      run: dotnet build Rested.Core.CQRS --configuration Debug --no-restore
-    - name: Build (Rested.Core.MSTest)
-      run: dotnet build Rested.Core.MSTest --configuration Debug --no-restore
-    - name: Build (Rested.Core.CQRS.MSTest)
-      run: dotnet build Rested.Core.CQRS.MSTest --configuration Debug --no-restore
-    - name: Build (Rested.Core.UnitTest)
-      run: dotnet build Rested.Core.UnitTest --configuration Debug --no-restore
-
-    # Test
-    - name: Test (Rested.Core.UnitTest)
-      run: dotnet test Rested.Core.UnitTest --no-restore --verbosity normal
+      - name: 'Determine Version'
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v3.0.0
+        with:
+          useConfigFile: true
+          
+      - name: 'Restore and Build Solution'
+        uses: KhaosVoid/Rested-GitHub-Shared/actions/restore-build-solution@main
+        
+      - name: 'Run Unit Tests'
+        uses: KhaosVoid/Rested-GitHub-Shared/actions/unit-test-dotnet-solution@main

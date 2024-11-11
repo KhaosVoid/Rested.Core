@@ -1,0 +1,18 @@
+﻿<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="..\GitVersion.yml" />
+    <File Path="..\README.md" />
+  </Folder>
+  <Folder Name="/Solution Items/GitHub Workflows/">
+    <File Path="..\.github\workflows\rested-core-cd.yml" />
+    <File Path="..\.github\workflows\rested-core-ci.yml" />
+  </Folder>
+  <Project Path="Rested.Core.Client\Rested.Core.Client.csproj" />
+  <Project Path="Rested.Core.Data.UnitTest\Rested.Core.Data.UnitTest.csproj" />
+  <Project Path="Rested.Core.Data\Rested.Core.Data.csproj" />
+  <Project Path="Rested.Core.MediatR.MSTest\Rested.Core.MediatR.MSTest.csproj" />
+  <Project Path="Rested.Core.MediatR\Rested.Core.MediatR.csproj" />
+  <Project Path="Rested.Core.Server.MSTest\Rested.Core.Server.MSTest.csproj" />
+  <Project Path="Rested.Core.Server.UnitTest\Rested.Core.Server.UnitTest.csproj" Type="Classic C#" />
+  <Project Path="Rested.Core.Server\Rested.Core.Server.csproj" />
+</Solution>

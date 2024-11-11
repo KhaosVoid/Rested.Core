@@ -33,7 +33,7 @@ jobs:
       - name: 'Tag Commit'  
         uses: mathieudutour/github-tag-action@v6.2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ github.token }}
           custom_tag: ${{ steps.gitversion.outputs.nuGetVersionV2 }}
           
       - name: 'Restore and Build Solution'

@@ -12,8 +12,6 @@ on:
 jobs:
   rested-core-cd:
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
     steps:
       - uses: actions/checkout@v4
         with:

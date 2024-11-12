@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rested.Core.Data;
+using Rested.Core.Data.Document;
 using Rested.Core.MediatR.Commands;
 using Rested.Core.MediatR.Validation;
 

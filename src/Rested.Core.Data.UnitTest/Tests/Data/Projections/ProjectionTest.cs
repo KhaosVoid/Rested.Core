@@ -1,5 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Rested.Core.Data.Document;
+using Rested.Core.Data.Projection;
 using Rested.Core.Data.UnitTest.Data;
 
 namespace Rested.Core.Data.UnitTest.Tests.Data.Projections
@@ -62,7 +64,7 @@ namespace Rested.Core.Data.UnitTest.Tests.Data.Projections
         [TestMethod]
         public void CanGetProjectionExpression()
         {
-            var projectionExpression = Projection.GetProjectionExpression<EmployeeProjection, IDocument<Employee>>();
+            var projectionExpression = Projection.Projection.GetProjectionExpression<EmployeeProjection, IDocument<Employee>>();
             var employeeDocumentMock = NSubstitute.Substitute.For<IDocument<Employee>>();
 
             employeeDocumentMock.Id = Guid.NewGuid();

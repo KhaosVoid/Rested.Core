@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Rested.Core.Data;
+using Rested.Core.Data.Document;
 using Rested.Core.MediatR.Validation;
 
 namespace Rested.Core.MediatR.Commands.Validation

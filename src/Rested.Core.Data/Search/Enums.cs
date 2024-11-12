@@ -1,4 +1,4 @@
-﻿namespace Rested.Core.Data
+﻿namespace Rested.Core.Data.Search
 {
     /// <summary>
     /// The sort direction for a field.

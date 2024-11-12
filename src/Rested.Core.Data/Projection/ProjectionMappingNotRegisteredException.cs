@@ -1,4 +1,4 @@
-﻿namespace Rested.Core.Data
+﻿namespace Rested.Core.Data.Projection
 {
     public sealed class ProjectionMappingNotRegisteredException : Exception
     {

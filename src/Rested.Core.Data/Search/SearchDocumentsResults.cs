@@ -1,4 +1,6 @@
-﻿namespace Rested.Core.Data
+﻿using Rested.Core.Data.Document;
+
+namespace Rested.Core.Data.Search
 {
     public record SearchDocumentsResults<TData, TDocument> : SearchResults<TDocument>
         where TData : IData

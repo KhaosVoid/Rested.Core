@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Rested.Core.Data;
+using Rested.Core.Data.Document;
+using Rested.Core.Data.Search;
 
 namespace Rested.Core.MediatR.Queries
 {

@@ -1,8 +1,7 @@
-﻿using System.Linq.Expressions;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace Rested.Core.Data
+namespace Rested.Core.Data.Projection
 {
     public class ProjectionRegistration
     {

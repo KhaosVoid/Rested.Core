@@ -5,6 +5,9 @@ using Microsoft.Extensions.Logging;
 using Rested.Core.Data;
 using Rested.Core.Server.Http;
 using System.Net.Mime;
+using Rested.Core.Data.Document;
+using Rested.Core.Data.Dto;
+using Rested.Core.Data.Search;
 
 namespace Rested.Core.Server.Mvc
 {

@@ -9,6 +9,9 @@ using Rested.Core.Data;
 using Rested.Core.MediatR.Queries;
 using Rested.Core.Server.Mvc;
 using System.Reflection;
+using Rested.Core.Data.Document;
+using Rested.Core.Data.Projection;
+using Rested.Core.Data.Search;
 
 namespace Rested.Core.Server.MSTest.Mvc
 {

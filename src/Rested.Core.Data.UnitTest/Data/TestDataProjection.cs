@@ -1,8 +1,9 @@
 ﻿using Rested.Core.Data;
+using Rested.Core.Data.Document;
 
 namespace Rested.Core.Data.UnitTest.Data
 {
-    public class TestDataProjection : Projection
+    public class TestDataProjection : Projection.Projection
     {
         #region Properties
 

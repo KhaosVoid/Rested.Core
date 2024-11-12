@@ -1,4 +1,6 @@
-﻿namespace Rested.Core.Data.UnitTest.Data
+﻿using Rested.Core.Data.Search;
+
+namespace Rested.Core.Data.UnitTest.Data
 {
     public class Employee : IData
     {

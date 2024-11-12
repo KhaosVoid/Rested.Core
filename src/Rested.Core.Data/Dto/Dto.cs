@@ -1,4 +1,4 @@
-﻿namespace Rested.Core.Data
+﻿namespace Rested.Core.Data.Dto
 {
     public record Dto<TData> : BaseDto where TData : IData
     {

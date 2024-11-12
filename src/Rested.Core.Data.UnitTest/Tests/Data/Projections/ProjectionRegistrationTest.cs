@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Rested.Core.Data.Projection;
 using Rested.Core.Data.UnitTest.Data;
 
 namespace Rested.Core.Data.UnitTest.Tests.Data.Projections

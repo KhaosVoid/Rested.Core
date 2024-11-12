@@ -1,4 +1,7 @@
 ﻿using Rested.Core.Data;
+using Rested.Core.Data.Document;
+using Rested.Core.Data.Dto;
+using Rested.Core.Data.Search;
 
 namespace Rested.Core.Client
 {

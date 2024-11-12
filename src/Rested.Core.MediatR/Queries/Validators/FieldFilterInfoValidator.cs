@@ -2,6 +2,7 @@
 using Rested.Core.Data;
 using Rested.Core.MediatR.Validation;
 using System.Text.RegularExpressions;
+using Rested.Core.Data.Search;
 
 namespace Rested.Core.MediatR.Queries.Validators
 {

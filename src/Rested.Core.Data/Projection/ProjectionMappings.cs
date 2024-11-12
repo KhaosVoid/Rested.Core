@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Rested.Core.Data
+namespace Rested.Core.Data.Projection
 {
     public static class ProjectionMappings
     {

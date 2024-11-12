@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Rested.Core.Data;
+using Rested.Core.Data.Document;
 using Rested.Core.MediatR.Queries;
 using Rested.Core.MediatR.Validation;
 

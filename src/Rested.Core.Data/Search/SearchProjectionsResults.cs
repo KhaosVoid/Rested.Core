@@ -1,8 +1,8 @@
-﻿namespace Rested.Core.Data
+﻿namespace Rested.Core.Data.Search
 {
     public record SearchProjectionsResults<TProjection> :
         SearchResults<TProjection>
-        where TProjection : Projection
+        where TProjection : Projection.Projection
     {
         #region Ctor
 

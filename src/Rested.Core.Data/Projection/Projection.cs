@@ -1,8 +1,8 @@
-﻿using Rested.Core.Data.Expressions;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using System.Reflection;
+using Rested.Core.Data.Expressions;
 
-namespace Rested.Core.Data
+namespace Rested.Core.Data.Projection
 {
     public abstract class Projection
     {

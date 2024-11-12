@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Rested.Core.Data;
 using System.Net.Mime;
+using Rested.Core.Data.Projection;
+using Rested.Core.Data.Search;
 
 namespace Rested.Core.Server.Mvc
 {

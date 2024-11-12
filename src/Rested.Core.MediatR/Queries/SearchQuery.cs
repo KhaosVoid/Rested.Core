@@ -5,6 +5,7 @@ using Rested.Core.MediatR.Queries.Validators;
 using Rested.Core.MediatR.Validation;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using Rested.Core.Data.Search;
 
 namespace Rested.Core.MediatR.Queries
 {

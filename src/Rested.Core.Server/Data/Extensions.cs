@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Rested.Core.Data;
 using System.Reflection;
+using Rested.Core.Data.Projection;
 
 namespace Rested.Core.Server.Data
 {

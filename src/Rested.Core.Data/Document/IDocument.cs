@@ -1,4 +1,4 @@
-﻿namespace Rested.Core.Data
+﻿namespace Rested.Core.Data.Document
 {
     public interface IDocument<TData> : IPersistedDocument where TData : IData
     {

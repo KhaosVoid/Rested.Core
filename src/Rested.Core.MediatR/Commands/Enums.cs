@@ -1,12 +1,11 @@
-﻿namespace Rested.Core.MediatR.Commands
+﻿namespace Rested.Core.MediatR.Commands;
+
+public enum CommandActions
 {
-    public enum CommandActions
-    {
-        Execute,
-        Insert,
-        Update,
-        Patch,
-        Prune,
-        Delete
-    }
+    Execute,
+    Insert,
+    Update,
+    Patch,
+    Prune,
+    Delete
 }

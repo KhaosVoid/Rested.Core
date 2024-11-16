@@ -2,26 +2,25 @@
 using Rested.Core.Server.Data;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Rested.Core.Server.Mvc
+namespace Rested.Core.Server.Mvc;
+
+public class RestedSingleResourceRouteAttribute : RouteAttribute
 {
-    public class RestedSingleResourceRouteAttribute : RouteAttribute
+    #region Ctor
+
+    public RestedSingleResourceRouteAttribute() :
+        base(RestedRouteTemplateSettings.CalculateSingleResourceRouteTemplate())
     {
-        #region Ctor
 
-        public RestedSingleResourceRouteAttribute() :
-            base(RestedRouteTemplateSettings.CalculateSingleResourceRouteTemplate())
-        {
-
-        }
-
-        public RestedSingleResourceRouteAttribute(
-            [StringSyntax("Route")] string template = null,
-            bool overridesConfig = false) :
-                base(RestedRouteTemplateSettings.CalculateSingleResourceRouteTemplate(template, overridesConfig))
-        {
-
-        }
-
-        #endregion Ctor
     }
+
+    public RestedSingleResourceRouteAttribute(
+        [StringSyntax("Route")] string template = null,
+        bool overridesConfig = false) :
+        base(RestedRouteTemplateSettings.CalculateSingleResourceRouteTemplate(template, overridesConfig))
+    {
+
+    }
+
+    #endregion Ctor
 }

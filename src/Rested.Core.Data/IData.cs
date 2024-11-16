@@ -1,7 +1,6 @@
-﻿namespace Rested.Core.Data
-{
-    public interface IData
-    {
+﻿namespace Rested.Core.Data;
 
-    }
+public interface IData
+{
+
 }

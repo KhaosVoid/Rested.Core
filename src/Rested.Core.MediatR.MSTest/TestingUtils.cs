@@ -1,23 +1,22 @@
 ﻿using Rested.Core.Data;
 
-namespace Rested.Core.MediatR.MSTest
+namespace Rested.Core.MediatR.MSTest;
+
+public static class TestingUtils
 {
-    public static class TestingUtils
+    public static string GenerateNameFromData<T>(int number = 1) where T : IData
     {
-        public static string GenerateNameFromData<T>(int number = 1) where T : IData
-        {
-            if (number < 1)
-                number = 1;
+        if (number < 1)
+            number = 1;
 
-            return $"{typeof(T).Name}-{number:000}";
-        }
+        return $"{typeof(T).Name}-{number:000}";
+    }
 
-        public static string GenerateDescriptionFromData<T>(int number = 1) where T : IData
-        {
-            if (number < 1)
-                number = 1;
+    public static string GenerateDescriptionFromData<T>(int number = 1) where T : IData
+    {
+        if (number < 1)
+            number = 1;
 
-            return $"Test {typeof(T).Name} {number:000}";
-        }
+        return $"Test {typeof(T).Name} {number:000}";
     }
 }

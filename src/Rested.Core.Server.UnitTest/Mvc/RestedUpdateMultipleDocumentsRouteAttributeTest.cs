@@ -1,12 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rested.Core.Server.Mvc;
 
-namespace Rested.Core.Server.UnitTest.Mvc
+namespace Rested.Core.Server.UnitTest.Mvc;
+
+[TestClass]
+public class RestedUpdateMultipleDocumentsRouteAttributeTest : RestedRouteAttributeTest<RestedUpdateMultipleDocumentsRouteAttribute>
 {
-    [TestClass]
-    public class RestedUpdateMultipleDocumentsRouteAttributeTest : RestedRouteAttributeTest<RestedUpdateMultipleDocumentsRouteAttribute>
-    {
-        protected override string OnSetExpectedRouteTemplate() =>
-            TestRestedRouteTemplateSettings.MultiResourceMethodRouteTemplate;
-    }
+    protected override string OnSetExpectedRouteTemplate() =>
+        TestRestedRouteTemplateSettings.MultiResourceMethodRouteTemplate;
 }

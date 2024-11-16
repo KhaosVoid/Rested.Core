@@ -1,7 +1,6 @@
-﻿namespace Rested.Core.Data
+﻿namespace Rested.Core.Data;
+
+public interface IIdentifiable
 {
-    public interface IIdentifiable
-    {
-        Guid Id { get; set; }
-    }
+    Guid Id { get; set; }
 }

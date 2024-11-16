@@ -1,16 +1,15 @@
-﻿namespace Rested.Core.Data.Search
+﻿namespace Rested.Core.Data.Search;
+
+public record SearchProjectionsResults<TProjection> :
+    SearchResults<TProjection>
+    where TProjection : Projection.Projection
 {
-    public record SearchProjectionsResults<TProjection> :
-        SearchResults<TProjection>
-        where TProjection : Projection.Projection
+    #region Ctor
+
+    public SearchProjectionsResults(SearchRequest searchRequest) : base(searchRequest)
     {
-        #region Ctor
 
-        public SearchProjectionsResults(SearchRequest searchRequest) : base(searchRequest)
-        {
-
-        }
-
-        #endregion Ctor
     }
+
+    #endregion Ctor
 }

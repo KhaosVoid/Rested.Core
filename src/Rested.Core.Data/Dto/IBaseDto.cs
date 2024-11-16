@@ -1,7 +1,6 @@
-﻿namespace Rested.Core.Data.Dto
+﻿namespace Rested.Core.Data.Dto;
+
+public interface IBaseDto : IIdentifiable
 {
-    public interface IBaseDto : IIdentifiable
-    {
-        byte[] ETag { get; set; }
-    }
+    byte[] ETag { get; set; }
 }

@@ -15,11 +15,12 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.12.2" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.6.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.6.3" />
     <PackageReference Include="NSubstitute" Version="5.3.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Rested.Core.Data.UnitTest\Rested.Core.Data.UnitTest.csproj" />
     <ProjectReference Include="..\Rested.Core.MediatR\Rested.Core.MediatR.csproj" />
   </ItemGroup>
 

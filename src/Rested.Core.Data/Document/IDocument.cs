@@ -1,8 +1,7 @@
-﻿namespace Rested.Core.Data.Document
+﻿namespace Rested.Core.Data.Document;
+
+public interface IDocument<TData> : IPersistedDocument where TData : IData
 {
-    public interface IDocument<TData> : IPersistedDocument where TData : IData
-    {
-        byte[] ETag { get; set; }
-        TData? Data { get; set; }
-    }
+    byte[] ETag { get; set; }
+    TData? Data { get; set; }
 }

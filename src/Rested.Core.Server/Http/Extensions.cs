@@ -1,39 +1,35 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using Microsoft.Extensions.DependencyInjection;
+using Rested.Core.Server.Json;
 
-namespace Rested.Core.Server.Http
+namespace Rested.Core.Server.Http;
+
+public static class Extensions
 {
-    public static class Extensions
+    public static IServiceCollection AddControllersRested(this IServiceCollection services)
     {
-        public static IServiceCollection AddControllersRested(this IServiceCollection services)
-        {
-            services
-                .AddHttpContextAccessor()
-                .AddEndpointsApiExplorer()
-                .AddSwaggerGen(setupAction =>
-                {
-                    setupAction.OperationFilter<IfMatchByteArrayOperationFilter>(Array.Empty<object>());
-                })
-                .AddSwaggerGenNewtonsoftSupport()
-                .AddControllersWithViews(options =>
-                {
-                    options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true;
-                })
-                .AddNewtonsoftJson(setupAction =>
-                {
-                    setupAction.SerializerSettings.Converters.Add(
-                        new StringEnumConverter(
-                            namingStrategy: new CamelCaseNamingStrategy()));
+        services
+            .AddHttpContextAccessor()
+            .AddEndpointsApiExplorer()
+            .AddSwaggerGen(setupAction =>
+            {
+                setupAction.OperationFilter<IfMatchByteArrayOperationFilter>();
+            })
+            .AddControllersWithViews(options =>
+            {
+                options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true;
+            })
+            .AddJsonOptions(configure =>
+            {
+                configure.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+                configure.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                configure.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                configure.JsonSerializerOptions.WriteIndented = true;
 
-                    setupAction.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-                    setupAction.SerializerSettings.Formatting = Formatting.Indented;
+                configure.JsonSerializerOptions.Converters.Add(new JsonIFilterConverter());
+            });
 
-                    setupAction.UseCamelCasing(processDictionaryKeys: true);
-                });
-
-            return services;
-        }
+        return services;
     }
 }

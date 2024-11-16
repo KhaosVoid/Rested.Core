@@ -4,26 +4,25 @@ using Rested.Core.Data;
 using System.Reflection;
 using Rested.Core.Data.Projection;
 
-namespace Rested.Core.Server.Data
+namespace Rested.Core.Server.Data;
+
+public static class Extensions
 {
-    public static class Extensions
+    public static IServiceCollection AddRestedRouteTemplates(this IServiceCollection services)
     {
-        public static IServiceCollection AddRestedRouteTemplates(this IServiceCollection services)
-        {
-            var configuration = services.BuildServiceProvider().GetService<IConfiguration>();
+        var configuration = services.BuildServiceProvider().GetService<IConfiguration>();
 
-            RestedRouteTemplateSettings.InitializeRouteTemplateSettings(configuration);
+        RestedRouteTemplateSettings.InitializeRouteTemplateSettings(configuration);
 
-            return services;
-        }
-
-        public static IServiceCollection RegisterProjectionMappings(this IServiceCollection services) =>
-            services.AddSingleton(ProjectionRegistration.Initialize());
-
-        public static IServiceCollection RegisterProjectionMappingsFromAssembly(this IServiceCollection services, Assembly assembly) =>
-            services.AddSingleton(ProjectionRegistration.Initialize(assembly));
-
-        public static IServiceCollection RegisterProjectionMappingsFromAssemblies(this IServiceCollection services, Assembly[] assemblies) =>
-            services.AddSingleton(ProjectionRegistration.Initialize(assemblies));
+        return services;
     }
+
+    public static IServiceCollection RegisterProjectionMappings(this IServiceCollection services) =>
+        services.AddSingleton(ProjectionRegistration.Initialize());
+
+    public static IServiceCollection RegisterProjectionMappingsFromAssembly(this IServiceCollection services, Assembly assembly) =>
+        services.AddSingleton(ProjectionRegistration.Initialize(assembly));
+
+    public static IServiceCollection RegisterProjectionMappingsFromAssemblies(this IServiceCollection services, Assembly[] assemblies) =>
+        services.AddSingleton(ProjectionRegistration.Initialize(assemblies));
 }

@@ -1,9 +1,8 @@
-﻿namespace Rested.Core.Data.UnitTest.Data
+﻿namespace Rested.Core.Data.UnitTest.Data;
+
+public enum EmploymentTypes
 {
-    public enum EmploymentTypes
-    {
-        Contract,
-        FullTime,
-        Salary
-    }
+    Contract,
+    FullTime,
+    Salary
 }

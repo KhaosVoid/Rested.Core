@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rested.Core.Data.UnitTest\Rested.Core.Data.UnitTest.csproj" />
     <ProjectReference Include="..\Rested.Core.MediatR\Rested.Core.MediatR.csproj" />
   </ItemGroup>
 

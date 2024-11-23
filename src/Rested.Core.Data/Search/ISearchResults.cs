@@ -8,6 +8,6 @@ public interface ISearchResults<TResult>
     List<TResult> Items { get; set; }
     int PageSize { get; set; }
     int Page { get; set; }
-    List<FieldSortInfo> SortingFields { get; set; }
-    List<IFilter> Filters { get; set; }
+    List<FieldSortInfo>? SortingFields { get; set; }
+    List<IFilter>? Filters { get; set; }
 }

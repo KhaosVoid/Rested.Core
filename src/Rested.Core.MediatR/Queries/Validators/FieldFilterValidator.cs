@@ -1,5 +1,5 @@
-using System.Text.RegularExpressions;
 using FluentValidation;
+using Rested.Core.Data;
 using Rested.Core.Data.Search;
 using Rested.Core.MediatR.Validation;
 
@@ -19,21 +19,8 @@ public abstract class FieldFilterValidator<TFieldFilter> : AbstractValidator<TFi
             action: () =>
             {
                 RuleFor(fieldFilter => fieldFilter)
-                    .Must(fieldFilter => IsFieldNameValid(fieldFilter.FieldName, validFieldNames, ignoredFieldNames))
+                    .Must(fieldFilter => DataUtility.IsFieldNameValid(fieldFilter.FieldName, validFieldNames, ignoredFieldNames))
                     .WithServiceErrorCode(serviceErrorCodes.CommonErrorCodes.FieldFilterNameIsInvalid);
             });
-    }
-
-    private static bool IsFieldNameValid(string fieldName, IEnumerable<string> validFieldNames, IEnumerable<string> ignoredFieldNames)
-    {
-        fieldName = Regex.Replace(
-            input: fieldName,
-            pattern: @"\[.*?\]",
-            replacement: "");
-
-        var doesFieldNameExist = validFieldNames.Contains(fieldName);
-        var isFieldNameIgnored = ignoredFieldNames.Contains(fieldName);
-
-        return doesFieldNameExist && !isFieldNameIgnored;
     }
 }

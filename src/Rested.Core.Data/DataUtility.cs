@@ -1,11 +1,15 @@
 using System.Reflection;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using Rested.Core.Data.Search;
 
 namespace Rested.Core.Data;
 
-public static class DataUtility
+public static partial class DataUtility
 {
+    [GeneratedRegex(@"\[(\d*)?\]")]
+    private static partial Regex FieldNameArrayRegex();
+    
     public static void GenerateValidSearchFieldNames<TResultType>(out List<string> validFieldNames, out List<string> ignoredFieldNames)
     {
         validFieldNames = [];
@@ -25,23 +29,27 @@ public static class DataUtility
         {
             var fieldFilterFieldName = string.IsNullOrWhiteSpace(fieldName) ?
                 property.Name.ToCamelCase() :
-                $"{fieldName}.{property.Name}".ToCamelCase();
+                $@"{fieldName}\.{property.Name}".ToCamelCase();
 
-            validFieldNames.Add(fieldFilterFieldName);
+            validFieldNames.Add($@"^{fieldFilterFieldName}$");
 
             if (property.GetCustomAttribute<SearchIgnoreAttribute>() is not null)
-                ignoredFieldNames.Add(fieldFilterFieldName);
+                ignoredFieldNames.Add($@"^{fieldFilterFieldName}$");
 
             else if (property.GetCustomAttribute<JsonIgnoreAttribute>() is not null)
-                ignoredFieldNames.Add(fieldFilterFieldName);
+                ignoredFieldNames.Add($@"^{fieldFilterFieldName}$");
 
             if (property.PropertyType.IsClass)
             {
                 if (property.PropertyType.IsGenericType)
                 {
                     if (property.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
-                        GetFieldNamesFromTypeProperties(property.PropertyType.GenericTypeArguments[0], validFieldNames, ignoredFieldNames, fieldFilterFieldName);
+                    {
+                        validFieldNames.Add($@"^{fieldFilterFieldName}\.\d*$");
+                        GetFieldNamesFromTypeProperties(property.PropertyType.GenericTypeArguments[0], validFieldNames, ignoredFieldNames, $@"{fieldFilterFieldName}\.\d*");
+                    }
 
+                    //TODO: After revising the array logic, this may need to be addressed as well...
                     else if (property.PropertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>))
                         GetFieldNamesFromTypeProperties(property.PropertyType.GenericTypeArguments[1], validFieldNames, ignoredFieldNames, fieldFilterFieldName);
                 }
@@ -51,7 +59,27 @@ public static class DataUtility
             }
 
             else if (property.PropertyType.IsArray)
-                GetFieldNamesFromTypeProperties(property.PropertyType.GetElementType(), validFieldNames, ignoredFieldNames, fieldFilterFieldName);
+            {
+                validFieldNames.Add($@"^{fieldFilterFieldName}\.\d*$");
+                GetFieldNamesFromTypeProperties(property.PropertyType.GetElementType(), validFieldNames, ignoredFieldNames, $@"{fieldFilterFieldName}\.\d*");
+            }
         }
+    }
+    
+    public static bool IsFieldNameValid(string fieldName, IEnumerable<string> validFieldNames, IEnumerable<string> ignoredFieldNames)
+    {
+        var fieldNameArrayMatch = FieldNameArrayRegex().Match(fieldName);
+
+        if (fieldNameArrayMatch.Success)
+        {
+            fieldName = FieldNameArrayRegex().Replace(
+                input: fieldName,
+                replacement: $".{fieldNameArrayMatch.Groups[0].Value}");
+        }
+
+        if (ignoredFieldNames.Any(ignoredFieldName => Regex.IsMatch(fieldName, ignoredFieldName)))
+            return false;
+
+        return validFieldNames.Any(validFieldName => Regex.IsMatch(fieldName, validFieldName));
     }
 }

@@ -101,11 +101,12 @@ public abstract class SearchQueryValidator<TResultType, TSearchResults, TSearchQ
             .LessThanOrEqualTo(query => query.MaxPageSize)
             .WithServiceErrorCode(ServiceErrorCodes.CommonErrorCodes.PageSizeMustBeLessThanOrEqualToMaxPageSize, query => [query.MaxPageSize]);
 
-        When(
-            predicate: query => query.SearchRequest.SortingFields is not null,
-            action: () => RuleForEach(query => query.SearchRequest.SortingFields).SetValidator(new FieldSortInfoValidator(validFieldNames, ignoredFieldNames, ServiceErrorCodes)));
-
-        RuleFor(query => query.SearchRequest.Filters).SetValidator(new FiltersValidator(validFieldNames, ignoredFieldNames, ServiceErrorCodes));
+        RuleForEach(query => query.SearchRequest.SortingFields)
+            .SetValidator(_ => new FieldSortInfoValidator(validFieldNames, ignoredFieldNames, ServiceErrorCodes))
+            .When(query => query.SearchRequest.SortingFields is not null && query.SearchRequest.SortingFields.Count > 0);
+        
+        RuleFor(query => query.SearchRequest.Filters)
+            .SetValidator(_ => new FiltersValidator(validFieldNames, ignoredFieldNames, ServiceErrorCodes));
     }
 
     #endregion Ctor

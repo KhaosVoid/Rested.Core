@@ -155,7 +155,9 @@ public abstract class SearchQueryHandler<TResultType, TSearchResults, TSearchQue
 
     protected virtual void OnBeginHandle(TSearchQuery query) { }
 
-    protected virtual List<IFilter> GetImplicitFilters() => new();
+    protected virtual List<FieldSortInfo> GetImplicitSortingFields() => [];
+    
+    protected virtual List<IFilter> GetImplicitFilters() => [];
 
     protected abstract Task<TSearchResults> GetSearchResults(TSearchQuery query);
 

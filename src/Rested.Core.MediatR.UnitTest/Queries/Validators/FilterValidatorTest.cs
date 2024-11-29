@@ -78,11 +78,9 @@ public class FilterValidatorTest<TFilterValidator, TFilter>
 
     protected TFilterValidator CreateValidator()
     {
-        DataUtility.GenerateValidSearchFieldNames<IDocument<Employee>>(out var validFieldNames, out var ignoredFieldNames);
-
         return (TFilterValidator)Activator.CreateInstance(
             type: typeof(TFilterValidator),
-            args: [validFieldNames, ignoredFieldNames, ServiceErrorCodes]);
+            args: [new ValidFieldNameGenerator(typeof(IDocument<Employee>)), ServiceErrorCodes]);
     }
 
     protected void TestFilterValidationRule(TFilterValidator filterValidator, TFilter filter, ServiceErrorCode serviceErrorCode, params object[] messageFormatArgs)

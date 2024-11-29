@@ -6,7 +6,7 @@ namespace Rested.Core.MediatR.Queries.Validators;
 
 public class OperatorFilterValidator : AbstractValidator<OperatorFilter>
 {
-    public OperatorFilterValidator(IEnumerable<string> validFieldNames, IEnumerable<string> ignoredFieldNames, ServiceErrorCodes serviceErrorCodes)
+    public OperatorFilterValidator(ValidFieldNameGenerator validFieldNameGenerator, ServiceErrorCodes serviceErrorCodes)
     {
         RuleFor(operatorFilter => operatorFilter.Operator)
             .IsInEnum()
@@ -17,7 +17,7 @@ public class OperatorFilterValidator : AbstractValidator<OperatorFilter>
             .WithServiceErrorCode(serviceErrorCodes.CommonErrorCodes.OperatorFilterFiltersIsRequired);
 
         RuleFor(operatorFilter => operatorFilter.Filters)
-            .SetValidator(_ => new FiltersValidator(validFieldNames, ignoredFieldNames, serviceErrorCodes))
+            .SetValidator(_ => new FiltersValidator(validFieldNameGenerator, serviceErrorCodes))
             .When(operatorFilter => operatorFilter.Filters is not null && operatorFilter.Filters.Count > 0);
     }
 }

@@ -71,6 +71,7 @@ public abstract class SearchQueryValidator<TResultType, TSearchResults, TSearchQ
     #region Properties
 
     public abstract ServiceErrorCodes ServiceErrorCodes { get; }
+    public virtual ValidFieldNameGenerator ValidFieldNameGenerator { get; } = new(typeof(TResultType));
 
     #endregion Properties
 
@@ -78,8 +79,6 @@ public abstract class SearchQueryValidator<TResultType, TSearchResults, TSearchQ
 
     public SearchQueryValidator()
     {
-        DataUtility.GenerateValidSearchFieldNames<TResultType>(out var validFieldNames, out var ignoredFieldNames);
-
         RuleFor(query => query.SearchRequest.Page)
             .GreaterThan(0)
             .WithServiceErrorCode(ServiceErrorCodes.CommonErrorCodes.PageMustBeGreaterThanZero);
@@ -102,11 +101,11 @@ public abstract class SearchQueryValidator<TResultType, TSearchResults, TSearchQ
             .WithServiceErrorCode(ServiceErrorCodes.CommonErrorCodes.PageSizeMustBeLessThanOrEqualToMaxPageSize, query => [query.MaxPageSize]);
 
         RuleForEach(query => query.SearchRequest.SortingFields)
-            .SetValidator(_ => new FieldSortInfoValidator(validFieldNames, ignoredFieldNames, ServiceErrorCodes))
+            .SetValidator(_ => new FieldSortInfoValidator(ValidFieldNameGenerator, ServiceErrorCodes))
             .When(query => query.SearchRequest.SortingFields is not null && query.SearchRequest.SortingFields.Count > 0);
         
         RuleFor(query => query.SearchRequest.Filters)
-            .SetValidator(_ => new FiltersValidator(validFieldNames, ignoredFieldNames, ServiceErrorCodes));
+            .SetValidator(_ => new FiltersValidator(ValidFieldNameGenerator, ServiceErrorCodes));
     }
 
     #endregion Ctor

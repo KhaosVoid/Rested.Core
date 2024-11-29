@@ -8,7 +8,7 @@ namespace Rested.Core.MediatR.Queries.Validators;
 public abstract class FieldFilterValidator<TFieldFilter> : AbstractValidator<TFieldFilter>
     where TFieldFilter : IFieldFilter
 {
-    protected FieldFilterValidator(IEnumerable<string> validFieldNames, IEnumerable<string> ignoredFieldNames, ServiceErrorCodes serviceErrorCodes)
+    protected FieldFilterValidator(ValidFieldNameGenerator validFieldNameGenerator, ServiceErrorCodes serviceErrorCodes)
     {
         RuleFor(fieldFilter => fieldFilter.FieldName)
             .NotEmpty()
@@ -19,7 +19,7 @@ public abstract class FieldFilterValidator<TFieldFilter> : AbstractValidator<TFi
             action: () =>
             {
                 RuleFor(fieldFilter => fieldFilter)
-                    .Must(fieldFilter => DataUtility.IsFieldNameValid(fieldFilter.FieldName, validFieldNames, ignoredFieldNames))
+                    .Must(fieldFilter => validFieldNameGenerator.IsFieldNameValid(fieldFilter.FieldName))
                     .WithServiceErrorCode(serviceErrorCodes.CommonErrorCodes.FieldFilterNameIsInvalid);
             });
     }

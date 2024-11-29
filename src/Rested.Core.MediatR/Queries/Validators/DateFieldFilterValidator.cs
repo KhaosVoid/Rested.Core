@@ -6,8 +6,8 @@ namespace Rested.Core.MediatR.Queries.Validators;
 
 public class DateFieldFilterValidator : FieldFilterValidator<DateFieldFilter>
 {
-    public DateFieldFilterValidator(IEnumerable<string> validFieldNames, IEnumerable<string> ignoredFieldNames, ServiceErrorCodes serviceErrorCodes) :
-        base(validFieldNames, ignoredFieldNames, serviceErrorCodes)
+    public DateFieldFilterValidator(ValidFieldNameGenerator validFieldNameGenerator, ServiceErrorCodes serviceErrorCodes) :
+        base(validFieldNameGenerator, serviceErrorCodes)
     {
         When(
             predicate: dateFieldFilter => dateFieldFilter.FilterOperation

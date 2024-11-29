@@ -6,16 +6,16 @@ namespace Rested.Core.MediatR.Queries.Validators;
 
 public class FiltersValidator : AbstractValidator<List<IFilter>>
 {
-    public FiltersValidator(IEnumerable<string> validFieldNames, IEnumerable<string> ignoredFieldNames, ServiceErrorCodes serviceErrorCodes)
+    public FiltersValidator(ValidFieldNameGenerator validFieldNameGenerator, ServiceErrorCodes serviceErrorCodes)
     {
         RuleForEach(filters => filters)
             .SetInheritanceValidator(v =>
             {
-                v.Add(_ => new TextFieldFilterValidator(validFieldNames, ignoredFieldNames, serviceErrorCodes));
-                v.Add(_ => new NumberFieldFilterValidator(validFieldNames, ignoredFieldNames, serviceErrorCodes));
-                v.Add(_ => new DateFieldFilterValidator(validFieldNames, ignoredFieldNames, serviceErrorCodes));
-                v.Add(_ => new DateTimeFieldFilterValidator(validFieldNames, ignoredFieldNames, serviceErrorCodes));
-                v.Add(_ => new OperatorFilterValidator(validFieldNames, ignoredFieldNames, serviceErrorCodes));
+                v.Add(_ => new TextFieldFilterValidator(validFieldNameGenerator, serviceErrorCodes));
+                v.Add(_ => new NumberFieldFilterValidator(validFieldNameGenerator, serviceErrorCodes));
+                v.Add(_ => new DateFieldFilterValidator(validFieldNameGenerator, serviceErrorCodes));
+                v.Add(_ => new DateTimeFieldFilterValidator(validFieldNameGenerator, serviceErrorCodes));
+                v.Add(_ => new OperatorFilterValidator(validFieldNameGenerator, serviceErrorCodes));
             })
             .When(filters => filters is not null && filters.Count > 0);
     }

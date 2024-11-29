@@ -7,7 +7,7 @@ namespace Rested.Core.MediatR.Queries.Validators;
 
 public class FieldSortInfoValidator : AbstractValidator<FieldSortInfo>
 {
-    public FieldSortInfoValidator(IEnumerable<string> validFieldNames, IEnumerable<string> ignoredFieldNames, ServiceErrorCodes serviceErrorCodes)
+    public FieldSortInfoValidator(ValidFieldNameGenerator validFieldNameGenerator, ServiceErrorCodes serviceErrorCodes)
     {
         RuleFor(fieldSortInfo => fieldSortInfo.FieldName)
             .NotEmpty()
@@ -18,7 +18,7 @@ public class FieldSortInfoValidator : AbstractValidator<FieldSortInfo>
             action: () =>
             {
                 RuleFor(fieldSortInfo => fieldSortInfo)
-                    .Must(m => DataUtility.IsFieldNameValid(m.FieldName, validFieldNames, ignoredFieldNames))
+                    .Must(fieldSortInfo => validFieldNameGenerator.IsFieldNameValid(fieldSortInfo.FieldName))
                     .WithServiceErrorCode(serviceErrorCodes.CommonErrorCodes.SortingFieldNameIsInvalid);
             });
     }
